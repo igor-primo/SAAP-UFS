@@ -7,6 +7,6 @@ Professora: Adicineia Aparecida de Oliveira
 Alunos: 
     --
     
-    --
+    Rita de Cássia Santos Rosa
     
     Valmir Vinicius da Cunha Rezende
