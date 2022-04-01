@@ -9,7 +9,5 @@ Alunos:
     Erick Santos Resende
     
     Igor de Souza Carvalhal Primo
-    
-    Rita de Cássia Santos Rosa
-    
+        
     Valmir Vinicius da Cunha Rezende
