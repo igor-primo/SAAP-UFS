@@ -16,12 +16,13 @@ async function handleStrategy(payload, done){
 	try{
 
 		const queryRes = await db.query(
-			`SELECT id_pessoa FROM usuario
-			WHERE id_pessoa = ${id};`
+			`SELECT id 
+				FROM usuario
+				WHERE id = ${id};`
 		);
 
 		if(queryRes.rows.length>0)
-			done(null, { id: queryRes.rows[0].id_pessoa });
+			done(null, { id: queryRes.rows[0].id});
 		else
 			done(null, false);
 

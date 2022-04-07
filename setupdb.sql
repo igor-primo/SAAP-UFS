@@ -1,0 +1,6 @@
+CREATE TABLE IF NOT EXISTS usuario (
+	id SERIAL,
+	username VARCHAR(60) NOT NULL,
+	password VARCHAR(255) NOT NULL,
+	email VARCHAR(60) NOT NULL
+);
