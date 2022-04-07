@@ -15,8 +15,6 @@ async function handleStrategy(payload, done){
 
 	try{
 
-		const queryText = db.queries.JWT_STRATEGY(payload.sub);
-
 		const queryRes = await db.query(
 			`SELECT id_pessoa FROM usuario
 			WHERE id_pessoa = ${id};`
