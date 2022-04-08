@@ -15,6 +15,7 @@ async function handleStrategy(payload, done){
 
 	try{
 
+		const id = payload.sub;
 		const queryRes = await db.query(
 			`SELECT id 
 				FROM usuario

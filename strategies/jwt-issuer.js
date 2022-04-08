@@ -3,12 +3,12 @@ const fs = require('fs');
 
 const PRIV_KEY = process.env.PRIVATE_KEY;
 
-function JWTissuer(user){
+function JWTissuer(id){
 
 	const expiresIn = '2w';
 
 	const payload = {
-		sub: user.id_pessoa,
+		sub: id,
 		iat: Date.now(),
 	};
 

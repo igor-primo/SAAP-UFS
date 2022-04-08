@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
+const session = require('express-session');
 
 const auth = require('./routers/auth');
 const error = require('./middlewares/error');
@@ -17,6 +18,7 @@ app.use(express.urlencoded({extended:false}));
 
 app.use('/api/v1/auth', auth);
 app.use(error);
+
 // docs
 
 /*

@@ -1,6 +1,8 @@
 const asyncWrapper = require('../utils/async');
 const models = require('../models/auth');
 
+// TODO: fazer validação de dados
+
 const signup = asyncWrapper(async (req, res) => {
 
 	console.log(req.body);
@@ -22,6 +24,31 @@ const signup = asyncWrapper(async (req, res) => {
 
 });
 
+const login = asyncWrapper(async (req, res) => {
+
+	const email = req.body.email;
+	const password = req.body.password;
+
+	const returned = await models.login(
+		email, password
+	);
+
+	return res.status(200)
+		.json(returned);
+
+});
+
+function token(req, res){
+
+	console.log(req.user);
+
+	return res.status(200).
+		json(req.user);
+
+}
+
 module.exports = {
-	signup
+	signup,
+	login,
+	token
 };

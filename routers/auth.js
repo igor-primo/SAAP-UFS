@@ -12,8 +12,16 @@ const {
 const router = express.Router();
 
 router.use(initialize());
+const auth = _ => authenticate('jwt', {session:false});
 
 router.route('/signup')
 	.post(authController.signup);
+
+router.route('/login')
+	.post(authController.login);
+
+router.route('/token')
+	.all(auth())
+	.get(authController.token);
 
 module.exports = router;
