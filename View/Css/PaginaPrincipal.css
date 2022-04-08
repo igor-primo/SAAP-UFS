@@ -1,0 +1,23 @@
+header#cabecalho{
+    display: block;
+    background-color: #0000CD;
+    border-radius: 0px 0px 5px 5px; /*top left,top right,bottom right,bottom left*/
+    height: auto;
+}
+
+nav#menu{
+    display: inline-block;
+    float: right;
+}
+
+nav#menu ul{
+    height: auto;
+    list-style: none;
+    position: relative;
+}
+
+nav#menu li{
+    color: white;
+    padding: 10px;
+    margin: 2px;
+}
