@@ -5,7 +5,7 @@
   margin: 10;
   display: flex;
   flex-wrap: wrap;
-  max-width: 800px;
+  max-width: 900px;
 }
 
 .Disciplinas > div{
@@ -13,12 +13,13 @@
 }
 
 .cardsDisciplinas {
-  max-width: 220px;
+  max-width: 210px;
   background: #dddddd;
   border-radius: 5px;
   height: 100%;
   padding: 5px;
   margin: 5px;
+  margin-bottom: 20px;
   display: flexbox;
   align-items: center;
 }
@@ -27,8 +28,9 @@
   width: 90%;
   margin-top: 1em;
   margin-left: 0.7em;
+  margin-bottom: 0.3em;
   border-radius: 5px;
-  display: flexbox;
+  /* display: flexbox; */
   align-items: center;
 }
 
@@ -41,12 +43,12 @@
 }
 
 .conteudoCard a{
-    text-decoration: none;
+  text-decoration: none;
 }
 
 .conteudoCard h4 {
   font-size: 15pt;
   text-align: center;
-  margin: 5px;
+  margin: 1px;
   color: black;
 }
