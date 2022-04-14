@@ -1,43 +1,7 @@
 @charset "UTF-8";
 
-header#cabecalho{
-    display: block;
-    background-color: #0000CD;
-    border-radius: 0px 0px 5px 5px; /*top left,top right,bottom right,bottom left*/
-    height: auto;
-    margin: -0.5em;
-}
-
 body{
     background-color: #DCDCDC;
-}
-
-nav#menu{
-    display: inline-block;
-    float: right;
-}
-
-nav#menu ul{
-    height: auto;
-    list-style: none;
-    position: relative;
-}
-
-nav#menu li{
-    display: inline-block;
-    padding: 10px;
-    margin: 5px;
-}
-
-nav#menu a{
-    color: white;
-    text-decoration: none;
-}
-
-
-.imagem{
-    max-height: 80px;
-    max-width: 150px;
 }
 
 div#corpo{
@@ -46,19 +10,4 @@ div#corpo{
     margin-left: 16%;
     margin-right: 10%;
     margin-top: -1.3em;
-}
-
-footer#rodape {
-    text-align: center;
-    border-top: 1px #606060 solid;
-    padding: 10px;
-}
-
-footer#rodape a{
-    text-decoration: none;
-    transition: background-color 1s;
-}
-
-footer#rodape a:hover{
-    color: #606060;
 }
