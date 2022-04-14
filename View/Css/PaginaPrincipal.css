@@ -1,3 +1,5 @@
+@charset "UTF-8";
+
 header#cabecalho{
     display: block;
     background-color: #0000CD;
@@ -33,7 +35,7 @@ nav#menu a{
 }
 
 
-img.imagem{
+.imagem{
     max-height: 80px;
     max-width: 150px;
 }
@@ -44,4 +46,19 @@ div#corpo{
     margin-left: 16%;
     margin-right: 10%;
     margin-top: -1.3em;
+}
+
+footer#rodape {
+    text-align: center;
+    border-top: 1px #606060 solid;
+    padding: 10px;
+}
+
+footer#rodape a{
+    text-decoration: none;
+    transition: background-color 1s;
+}
+
+footer#rodape a:hover{
+    color: #606060;
 }
