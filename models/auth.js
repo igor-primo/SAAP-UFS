@@ -14,7 +14,8 @@ async function signup (username, password, email){
 		const queryres = await client.query(
 			`SELECT id
 				FROM usuario
-				WHERE LOWER(email) = LOWER('${email}');`
+				WHERE LOWER(email) = LOWER($1);`,
+			[ email ]
 		);
 
 		if(queryres.rows.length>0){
@@ -34,10 +35,11 @@ async function signup (username, password, email){
 				usuario
 			VALUES(
 				DEFAULT,
-				'${username}',
-				'${hash}',
-				'${email}'
-			);`
+				$1,
+				$2,
+				$3
+			);`,
+			[ username, hash, email ]
 		);
 
 		await client.query('COMMIT');
@@ -71,7 +73,8 @@ async function login (email, password){
 		const queryres = await db.query(
 			`SELECT id, password
 				FROM usuario
-				WHERE LOWER(email) = LOWER('${email}');`
+				WHERE LOWER(email) = LOWER($1);`,
+			[ email ]
 		);
 
 		if(queryres.rows.length == 0)
