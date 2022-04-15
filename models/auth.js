@@ -5,32 +5,23 @@ const {JWTissuer} = require('../strategies/jwt-issuer');
 
 async function signup (username, password, email){
 
-	const client = await db.getClient();
-
 	try {
 
 		const hash = await bcrypt.hash(password, 10);
-		await client.query('BEGIN');
-		const queryres = await client.query(
+		const queryres = await db.query(
 			`SELECT id
 				FROM usuario
 				WHERE LOWER(email) = LOWER($1);`,
 			[ email ]
 		);
 
-		if(queryres.rows.length>0){
-
-			await client.query('COMMIT');
-			client.release();
-
+		if(queryres.rows.length>0)
 			return {
 				jaCadastrado: true,
 				response: queryres.rows[0]
 			};
 
-		}
-
-		await client.query(
+		await db.query(
 			`INSERT INTO
 				usuario
 			VALUES(
@@ -42,9 +33,6 @@ async function signup (username, password, email){
 			[ username, hash, email ]
 		);
 
-		await client.query('COMMIT');
-		client.release();
-
 		return {
 			jaCadastrado: false,
 			response: queryres.rows[0]
@@ -52,8 +40,6 @@ async function signup (username, password, email){
 
 	} catch(e) {
 		
-		client.query('ROLLBACK');
-		client.release();
 		throw e;
 
 	}
