@@ -1,13 +1,61 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="/Icons/LogoColoridoSemFundo.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined"> <!--Google icons-->
+    <link rel="stylesheet" href="/View/Css/Cabecalho.css">
+    <link rel="stylesheet" href="/View/Css/EstruturaPrincipal.css">
+    <link rel="stylesheet" href="/View/Css/CardProjeto.css">
+    <link rel="stylesheet" href="/View/Css/Footer.css">
+    <link rel="stylesheet" href="/View/Css/MenuLateral.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
     <title>Disciplina</title>
 </head>
+
 <body>
-    
+    <header id="cabecalho" aria-orientation="horizontal">
+        <a href="/View/PaginaPrincipal.html">
+            <img src="/Image/UfsLogo.png" class="imagem" alt="LogoUfs">
+        </a>
+        <nav id="menu">
+            <!-- Determina um menu de navegação, tudo que estiver dentro dessa tag será considerada parte do menu -->
+            <ul>
+                <li><a href="PaginaPrincipal.html">Página principal</a></li>
+                <li><a href="Perfil.html">Perfil</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="btnAbrirMenu"><span class="material-icons-outlined">menu</span></div>
+    <nav class="menuLateral">
+        <div class="tituloMenu">Menu <span class="material-icons-outlined  btnFecharMenu">close</span></div>
+        <ul>
+            <li><a href="/View/CadastroProjeto.html">Cadastrar Projeto</a></li> 
+            <li><a href="">Vizualizar informações disciplina</a></li>
+            <li><a href="">Editar disciplina</a></li> 
+            <li><a href="">Fechar Disciplina</a></li> 
+        </ul>
+    </nav>
+    <div id="corpo">
+        <h1 style="text-align: center;">Nome Disciplina</h1>
+        <section class="Projetos" id="Projetos">
+            <div class="cardsProjetos">
+                <div class="conteudoCard">
+                    <a href="Projeto.html">
+                        <h4>Nome Projeto</h4>
+                    </a>
+                    <p>Data de entrega/aprentação: dd/mm/aaaa</p>
+                </div>
+            </div>
+        </section>
+        <footer id="rodape">
+            &copy; Copyright 2021 - by Erick Santos, Igor Primo e Valmir Cunha
+        </footer>
+    </div>
+    <script src="/Controller/ControllerMenuLateral.js"></script>
 </body>
+
 </html>

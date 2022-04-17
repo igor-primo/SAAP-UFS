@@ -1,30 +1,30 @@
 @charset "UTF-8";
- 
-.Disciplinas{
-  width: 50vw; /*"vw" = view width , quanto do tamanho da tela*/
+
+.Disciplinas {
+  width: 50vw;
+  /*"vw" = view width , quanto do tamanho da tela*/
   margin: 10;
   display: flex;
   flex-wrap: wrap;
   max-width: 900px;
 }
 
-.Disciplinas > div{
+.Disciplinas>div {
   flex: 1 1 150px;
 }
 
 .cardsDisciplinas {
-  max-width: 210px;
-  background: #dddddd;
+  max-width: 220px;
+  border-style: solid;
   border-radius: 5px;
   height: 100%;
-  padding: 5px;
   margin: 5px;
   margin-bottom: 20px;
   display: flexbox;
   align-items: center;
 }
 
-.cardsDisciplinas img{
+.cardsDisciplinas img {
   width: 90%;
   margin-top: 1em;
   margin-left: 0.7em;
@@ -35,14 +35,15 @@
 }
 
 .conteudoCard {
+  background: white;
   height: 70%;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: space-around;
+  border-top: 1px #606060 solid;
 }
 
-.conteudoCard a{
+.conteudoCard a {
   text-decoration: none;
 }
 

@@ -5,7 +5,7 @@ header#cabecalho{
     background-color: #0000CD;
     border-radius: 0px 0px 5px 5px; /*top left,top right,bottom right,bottom left*/
     height: auto;
-    margin: -0.5em -0.5em 0 -0.5em; /*top,right,bottom,left*/
+    
 }
 
 nav#menu{
@@ -23,6 +23,9 @@ nav#menu li{
     display: inline-block;
     padding: 10px;
     margin: 5px;
+    /* margin-top: 10%; */
+    margin-top: 1.1em;
+    /* vertical-align: middle; */
 }
 
 nav#menu a{
