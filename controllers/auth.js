@@ -10,9 +10,12 @@ const signup = asyncWrapper(async (req, res) => {
 	const username = req.body.username;
 	const password = req.body.password;
 	const email = req.body.email;
+	const matricula = req.body.matricula;
+	const is_aluno = req.body.is_aluno;
 
 	const returned = await models.signup(
-		username, password, email
+		username, password, email,
+		matricula, is_aluno
 	);
 
 	if(returned.jaCadastrado)

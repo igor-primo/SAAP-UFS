@@ -3,9 +3,17 @@ const bcrypt = require('bcryptjs');
 const {customError} = require('../errors/custom');
 const {JWTissuer} = require('../strategies/jwt-issuer');
 
-async function signup (username, password, email){
+async function signup (
+	username, 
+	password, 
+	email,
+	matricula,
+	is_aluno
+){
 
 	try {
+
+		//TODO: decide if username is to be unique
 
 		const hash = await bcrypt.hash(password, 10);
 		const queryres = await db.query(
@@ -28,9 +36,17 @@ async function signup (username, password, email){
 				DEFAULT,
 				$1,
 				$2,
-				$3
+				$3,
+				$4,
+				$5
 			);`,
-			[ username, hash, email ]
+			[ 
+				username, 
+				hash, 
+				email,
+				matricula, 
+				is_aluno
+			]
 		);
 
 		return {

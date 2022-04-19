@@ -4,6 +4,7 @@ const cors = require('cors');
 const session = require('express-session');
 
 const auth = require('./routers/auth');
+const disciplina = require('./routers/disciplina');
 const error = require('./middlewares/error');
 
 const app = express();
@@ -17,6 +18,7 @@ app.use(express.urlencoded({extended:false}));
 // api
 
 app.use('/api/v1/auth', auth);
+app.use('/api/v1/disciplina', disciplina);
 app.use(error);
 
 // docs

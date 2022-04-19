@@ -1,6 +1,34 @@
 CREATE TABLE IF NOT EXISTS usuario (
-	id SERIAL,
+	id SERIAL PRIMARY KEY,
 	username VARCHAR(60) NOT NULL,
 	password VARCHAR(255) NOT NULL,
-	email VARCHAR(60) NOT NULL
+	email VARCHAR(60) NOT NULL,
+	matricula VARCHAR(10) NOT NULL,
+	is_aluno BOOLEAN DEFAULT FALSE NOT NULL,
+	CONSTRAINT unique_name UNIQUE(username),
+	CONSTRAINT unique_email UNIQUE(email)
+);
+
+CREATE TABLE IF NOT EXISTS disciplina (
+	id SERIAL PRIMARY KEY,
+	nome_disc VARCHAR(20) NOT NULL,
+	prof_resp INT NOT NULL,
+	CONSTRAINT refer_prof_resp FOREIGN KEY(prof_resp)
+		REFERENCES usuario(id)
+		ON DELETE CASCADE
+		ON UPDATE CASCADE
+);
+
+CREATE TABLE IF NOT EXISTS disc_cad (
+	disc_cad INT NOT NULL,
+	disc_id INT NOT NULL,
+	CONSTRAINT refer_disc_cad FOREIGN KEY(disc_cad)
+		REFERENCES usuario(id)
+		ON DELETE CASCADE
+		ON UPDATE CASCADE,
+	CONSTRAINT refer_disc FOREIGN KEY(disc_id)
+		REFERENCES disciplina(id)
+		ON DELETE CASCADE
+		ON UPDATE CASCADE,
+	PRIMARY KEY(disc_cad, disc_id)
 );
