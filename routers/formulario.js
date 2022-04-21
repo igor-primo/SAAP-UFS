@@ -1,5 +1,5 @@
 const express = require('express');
-const grupoController = require('../controllers/grupo');
+const formularioController = require('../controllers/formulario');
 const passport = require('../strategies/configure');
 const {authenticate} = passport.configure();
 
@@ -8,7 +8,6 @@ const auth = _ => authenticate('jwt', {session:false});
 
 router.route('/:id_proj/projeto')
 	.all(auth())
-	.get(grupoController.get_grupos_cadastrados)
-	.post(grupoController.post_grupos_cadastrados);
+	.post(formularioController.post_formularios_cadastrados);
 
 module.exports = router;
