@@ -11,6 +11,7 @@ router.route('/')
 	.get(disciplinaController.get_disciplinas_cadastradas)
 	.post(disciplinaController.post_disciplinas_cadastradas);
 
+//TODO: correct this
 router.route('/cadastrar_usuario')
 	.all(auth())
 	.post(disciplinaController.cadastrar_usuario);

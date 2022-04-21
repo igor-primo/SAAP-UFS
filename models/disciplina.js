@@ -1,5 +1,5 @@
 const db = require('../db');
-const {customError} = require('../errors/custom');
+const {customerror} = require('../errors/custom');
 
 async function get_disciplinas_cadastradas(id){
 
@@ -96,6 +96,6 @@ module.exports = {
 
 	get_disciplinas_cadastradas,
 	post_disciplinas_cadastradas,
-	cadastrar_usuario
+	cadastrar_usuario,
 
 };

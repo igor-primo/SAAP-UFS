@@ -22,13 +22,92 @@ CREATE TABLE IF NOT EXISTS disciplina (
 CREATE TABLE IF NOT EXISTS disc_cad (
 	disc_cad INT NOT NULL,
 	disc_id INT NOT NULL,
-	CONSTRAINT refer_disc_cad FOREIGN KEY(disc_cad)
+	CONSTRAINT refer_disc_cad_us FOREIGN KEY(disc_cad)
 		REFERENCES usuario(id)
 		ON DELETE CASCADE
 		ON UPDATE CASCADE,
-	CONSTRAINT refer_disc FOREIGN KEY(disc_id)
+	CONSTRAINT refer_disc_cad_disc FOREIGN KEY(disc_id)
 		REFERENCES disciplina(id)
 		ON DELETE CASCADE
 		ON UPDATE CASCADE,
 	PRIMARY KEY(disc_cad, disc_id)
+);
+
+CREATE TABLE IF NOT EXISTS projeto (
+	id SERIAL NOT NULL,
+	nome VARCHAR(20) NOT NULL,
+	fk_disc INT,
+	is_indiv BOOLEAN NOT NULL DEFAULT FALSE,
+	is_pond BOOLEAN NOT NULL DEFAULT FALSE,
+	peso DOUBLE PRECISION,
+	data_apres DATE NOT NULL,
+	CONSTRAINT refer_proj_disc FOREIGN KEY(fk_disc)
+		REFERENCES disciplina(id)
+		ON DELETE CASCADE
+		ON UPDATE CASCADE
+);
+
+CREATE TABLE IF NOT EXISTS formulario (
+	id SERIAL PRIMARY KEY,
+	fk_proj INT,
+	data_começo DATE NOT NULL,
+	data_fim DATE NOT NULL,	
+	CONSTRAINT refer_form_proj FOREIGN KEY (fk_proj)
+		REFERENCES projeto(id)
+		ON DELETE CASCADE
+		ON UPDATE CASCADE
+);
+
+CREATE TABLE IF NOT EXISTS secao_quest(
+	id SERIAL PRIMARY KEY,
+	fk_form INT,
+	nome_sec VARCHAR(20) NOT NULL,
+	CONSTRAINT refer_sec_form FOREIGN KEY(fk_form)
+		REFERENCES formulario(id)
+		ON DELETE CASCADE
+		ON UPDATE CASCADE
+);
+
+CREATE TABLE IF NOT EXISTS quesito(
+	id SERIAL PRIMARY KEY,
+	fk_secao INT,
+	pergunta VARCHAR(255) NOT NULL,
+	CONSTRAINT refer_ques_secao FOREIGN KEY(fk_secao)
+		REFERENCES secao_quest(id)
+		ON DELETE CASCADE
+		ON UPDATE CASCADE
+);
+
+
+CREATE TABLE IF NOT EXISTS avaliador(
+	fk_id_us INT NOT NULL,
+	fk_id_proj 	INT NOT NULL,
+	CONSTRAINT refer_aval_us FOREIGN KEY(fk_id_us)
+		REFERENCES usuario(id)
+		ON DELETE CASCADE
+		ON UPDATE CASCADE,
+	CONSTRAINT refer_aval_proj FOREIGN KEY(fk_id_proj)
+		REFERENCES projeto(id)
+		ON DELETE CASCADE
+		ON UPDATE CASCADE,
+	PRIMARY KEY(fk_id_us, fk_id_proj)
+);
+
+CREATE TABLE IF NOT EXISTS grupo(
+	id SERIAL PRIMARY KEY,
+	fk_proj INT,
+	CONSTRAINT refer_grupo_proj FOREIGN KEY(fk_proj)
+		REFERENCES projeto(id)
+		ON DELETE CASCADE
+		ON UPDATE CASCADE,
+);
+
+CREATE TABLE IF NOT EXISTS resultado(
+	id SERIAL PRIMARY KEY,
+	fk_grupo INT,
+	result DOUBLE PRECISION,
+	CONSTRAINT refer_result_grupo FOREIGN KEY(fk_grupo)
+		REFERENCES grupo(id)
+		ON DELETE CASCADE
+		ON UPDATE CASCADE
 );

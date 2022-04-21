@@ -46,6 +46,6 @@ module.exports = {
 
 	get_disciplinas_cadastradas,
 	post_disciplinas_cadastradas,
-	cadastrar_usuario
+	cadastrar_usuario,
 
 };
