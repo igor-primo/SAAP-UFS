@@ -19,7 +19,8 @@ async function handleStrategy(payload, done){
 		const queryRes = await db.query(
 			`SELECT id 
 				FROM usuario
-				WHERE id = ${id};`
+				WHERE id = $1;`,
+			[ id ]
 		);
 
 		if(queryRes.rows.length>0)

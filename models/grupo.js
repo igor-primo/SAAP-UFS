@@ -6,7 +6,7 @@ async function get_grupos_cadastrados(id){
 	try {
 
 		const queryres =
-			db.query(
+			await db.query(
 				`SELECT id, nome FROM
 					grupo
 				WHERE 
@@ -32,7 +32,7 @@ async function post_grupos_cadastrados(
 	try {
 
 		const queryres = 
-			db.query(
+			await db.query(
 				`INSERT INTO
 					grupo
 				VALUES(

@@ -8,13 +8,13 @@ async function post_formularios_cadastrados(
 	secoes,
 ){
 
-	const client = db.getClient();
+	const client = await db.getClient();
 
 	try {
 
-		client.query('BEGIN');
+		await client.query('BEGIN');
 
-		const id_form = client.query(
+		const queryres = await client.query(
 			`INSERT INTO
 				formulario
 			VALUES(
@@ -22,7 +22,7 @@ async function post_formularios_cadastrados(
 				$1,
 				$2,
 				$3
-			) RETURNING id;`.
+			) RETURNING id;`,
 			[ 
 				id,
 				data_comeco,
@@ -30,27 +30,29 @@ async function post_formularios_cadastrados(
 			]
 		);
 
+		const id_form = queryres.rows[0].id;
 		const len_sec = secoes.length;
 
 		for(let i=0;i<len_sec;i+=2){
 
-			const id_secao = await client.query(
+			const queryres2 = await client.query(
 				`INSERT INTO
-					secao_ques
+					secao_quest
 				VALUES(
 					DEFAULT,
 					$1,
 					$2
-				) REUTRNING id;`,
+				) RETURNING id;`,
 				[ id_form, secoes[i] ]
 			);
 
+			const id_secao = queryres2.rows[0].id;
 			const len_ques = secoes[i+1].length;
 
 			for(let j=0;j<len_ques;j++)
 				await client.query(
 					`INSERT INTO
-						quesitos
+						quesito
 					VALUES(
 						DEFAULT,
 						$1,

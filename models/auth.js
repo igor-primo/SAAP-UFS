@@ -110,7 +110,8 @@ async function login (email, password){
 
 }
 
+
 module.exports = {
 	signup,
-	login
+	login,
 };

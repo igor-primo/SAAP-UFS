@@ -5,7 +5,7 @@ async function get_projetos_cadastrados(id){
 
 	try {
 
-		const queryres = db.query(
+		const queryres = await db.query(
 			`SELECT id, nome FROM
 				projeto
 			WHERE
@@ -27,14 +27,14 @@ async function post_projetos_cadastrados(
 	id_disc,
 	nome,
 	is_indiv,
-	is_pond
+	is_pond,
 	peso,
 	data_apres
 ){
 
 	try {
 
-		const queryres = db.query(
+		const queryres = await db.query(
 			`INSERT INTO
 				projeto
 			VALUES(

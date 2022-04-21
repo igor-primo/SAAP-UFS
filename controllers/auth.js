@@ -53,5 +53,5 @@ function token(req, res){
 module.exports = {
 	signup,
 	login,
-	token
+	token,
 };

@@ -13,6 +13,13 @@ do
 	echo '4 - Get Disciplinas'
 	echo '5 - Post Disciplinas'
 	echo '6 - Cadastrar Usuário em Disciplina'
+	echo '7 - Get Projetos'
+	echo '8 - Post Projeto'
+	echo '9 - Get Grupos'
+	echo '10 - Post Grupo'
+	echo '11 - Get Formulario'
+	echo '12 - Post Formulario'
+	echo '13 - Get Users'
 	read opt
 	case $opt in
 		'1')
@@ -27,7 +34,7 @@ do
 			echo 'Aluno? (true/false)'
 			read is_aluno
 
-			curl -v -X POST "$BASE_URL/auth/signup" \
+			curl -X POST "$BASE_URL/auth/signup" \
 				-d 'username='"$username"'' \
 				-d 'password='"$password"'' \
 				-d 'email='"$email"'' \
@@ -48,7 +55,7 @@ do
 			;;
 		'3')
 
-			curl -v "$BASE_URL/auth/token" \
+			curl "$BASE_URL/auth/token" \
 				-H 'Authorization: Bearer '$TOKEN''
 			;;
 		'4')
@@ -74,6 +81,70 @@ do
 				-H 'Authorization: Bearer '$TOKEN'' \
 				-d 'id_us='"$id_us"'' \
 				-d 'disc_id='"$disc_id"'' | jq '.'
+			;;
+		'7')
+			echo 'Disciplina id?'
+			read id_disc
+
+			curl "$BASE_URL/projeto/$id_disc/disciplina" \
+				-H 'Authorization: Bearer '$TOKEN''
+			;;
+		'8')
+			echo 'Disciplina id?'
+			read id_disc
+			echo 'nome?'
+			read nome
+			echo 'Individual?'
+			read is_indiv
+			echo 'Ponderada?'
+			read is_pond
+			echo 'Peso?'
+			read peso
+			echo 'Data apresentacao?'
+			read data_apres
+
+			curl -X POST "$BASE_URL/projeto/$id_disc/disciplina" \
+				-H 'Authorization: Bearer '$TOKEN'' \
+				-d 'nome='"$nome"'' \
+				-d 'is_indiv='"$is_indiv"'' \
+				-d 'is_pond='"$is_pond"'' \
+				-d 'peso='"$peso"'' \
+				-d 'data_apres='"$data_apres"''
+			;;
+		'9') 
+			echo 'Projeto id?'
+			read id_proj
+
+			curl "$BASE_URL/grupo/$id_proj/projeto" \
+				-H 'Authorization: Bearer '$TOKEN''
+			;;
+		'10') 
+			echo 'Projeto id?'
+			read id_proj
+			echo 'Nome?'
+			read nome
+
+			curl "$BASE_URL/grupo/$id_proj/projeto" \
+				-H 'Authorization: Bearer '$TOKEN'' \
+				-d 'nome='"$nome"''
+			;;
+		'11')
+			echo 'Projeto id?'
+			read id_proj
+
+			curl "$BASE_URL/formulario/$id_proj/projeto" \
+				-H 'Authorization: Bearer '$TOKEN''
+			;;
+		'12')
+			echo 'Projeto id?'
+			read id_proj
+
+			curl -X POST "$BASE_URL/formulario/$id_proj/projeto" \
+				-H 'Authorization: Bearer '$TOKEN''
+			;;
+		'13')
+			curl "$BASE_URL/avaliador/users" \
+				-H 'Authorization: Bearer '$TOKEN''
 			;;
 		*)
 			;;

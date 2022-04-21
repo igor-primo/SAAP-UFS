@@ -14,12 +14,12 @@ const get_projetos_cadastrados = asyncWrapper(async (req, res) => {
 
 const post_projetos_cadastrados = asyncWrapper(async (req, res) => {
 
-	const id_disc = req.body.id_disc;
+	const id_disc = req.params.id_disc;
 	const nome = req.body.nome;
 	const is_indiv = req.body.is_indiv || false;
 	const is_pond = req.body.is_pond || false;
 	const peso = req.body.peso || null;
-	const data_apres = req.body.data_apres;
+	const data_apres = req.body.data_apres || new Date(); //date object
 
 	//TODO: prep data_apres for db
 

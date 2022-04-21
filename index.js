@@ -6,6 +6,8 @@ const session = require('express-session');
 const auth = require('./routers/auth');
 const disciplina = require('./routers/disciplina');
 const projeto = require('./routers/projeto');
+const grupo = require('./routers/grupo');
+const formulario = require('./routers/formulario');
 const error = require('./middlewares/error');
 
 const app = express();
@@ -21,6 +23,8 @@ app.use(express.urlencoded({extended:false}));
 app.use('/api/v1/auth', auth);
 app.use('/api/v1/disciplina', disciplina);
 app.use('/api/v1/projeto', projeto);
+app.use('/api/v1/grupo', grupo);
+app.use('/api/v1/formulario', formulario);
 app.use(error);
 
 // docs

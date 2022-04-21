@@ -15,11 +15,12 @@ const get_disciplinas_cadastradas = asyncWrapper(async (req, res) => {
 
 const post_disciplinas_cadastradas = asyncWrapper(async (req, res) => {
 	
+	const id = req.user.id;
 	const nome_disc = req.body.nome_disc;
 	const prof_resp = req.user.id;
 
 	await models.post_disciplinas_cadastradas(
-		nome_disc, prof_resp
+		id, nome_disc, prof_resp
 	);
 
 	return res.status(201).send();

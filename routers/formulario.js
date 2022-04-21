@@ -8,6 +8,7 @@ const auth = _ => authenticate('jwt', {session:false});
 
 router.route('/:id_proj/projeto')
 	.all(auth())
+	.get(formularioController.get_formularios_cadastrados)
 	.post(formularioController.post_formularios_cadastrados);
 
 module.exports = router;
