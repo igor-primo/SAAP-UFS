@@ -1,33 +1,58 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="/Icons/LogoColoridoSemFundo.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined">
+    <!--Google icons-->
     <link rel="stylesheet" href="/View/Css/Cabecalho.css">
     <link rel="stylesheet" href="/View/Css/EstruturaPrincipal.css">
     <link rel="stylesheet" href="/View/Css/Footer.css">
     <link rel="stylesheet" href="/View/Css/EstiloFormulario.css">
     <style>
-        table, th, td{
+        table,
+        th,
+        td {
             border: 1px solid black;
-            border-collapse: collapse; /*Tira os espaços entre as células*/
+            border-collapse: collapse;
+            /*Tira os espaços entre as células*/
             padding: 5px 10px;
         }
-        th{
+
+        th {
             background-color: #0000CD;
             color: white;
         }
 
         /*Muda a cor da linhas impares para cinza*/
-        table tr:nth-child(odd){
+        table tr:nth-child(odd) {
             background-color: #ddd;
         }
 
+        input,
+        .btnRemover {
+            padding: auto;
+            cursor: pointer;
+        }
+
+        input[type="button"]{
+            margin-left: 1em;
+            font-size: 10pt;
+            background-color: blue;
+            color: #dddddd;
+            border-radius: 5px;
+            padding: 2px 10px; 
+        }
+        .tabelaIntegrantes{
+            margin-left: 21%;
+        }
     </style>
     <title>Cadastro Grupo</title>
 </head>
+
 <body>
     <header id="cabecalho" aria-orientation="horizontal">
         <a href="/View/PaginaPrincipal.html">
@@ -56,25 +81,35 @@
                 <div class="campo">
                     <label for="integrante">Integrante:</label>
                     <input type="text" name="data" id="integrante" placeholder="Digite o usuário do aluno">
+                    <input type="button" value="Adicionar" >
                 </div>
+                <label for="">Lista de integrantes:</label>
                 <div class="tabelaIntegrantes">
-                    <label for="integrantes">Lista de integrantes:</label>
-                    <table class="integrantes">
-                        <tr class="titulos"> <!--Linha-->
+                    <table id="tabela">
+                        <tr class="titulos">
+                            <!--Linha-->
                             <th>Usuário</th>
                             <th>Nome</th>
+                            <th>Remover</th>
                         </tr>
-                        <tr> <!--Linha-->
+                        <tr>
+                            <!--Linha-->
                             <td>usuariox</td>
                             <td>Fulano de tal</td>
+                            <!-- <td><input type="button" value="Delete" onclick="deleteRow(this.parentNode.parentNode.rowIndex)"></td> -->
+                            <td><span class="material-icons-outlined btnRemover" onclick="deleteRow(this.parentNode.parentNode.rowIndex)">close</span></td>
                         </tr>
-                        <tr> <!--Linha-->
+                        <tr>
+                            <!--Linha-->
                             <td>usuariox</td>
                             <td>Fulano de tal</td>
+                            <td><span class="material-icons-outlined btnRemover" onclick="deleteRow(this.parentNode.parentNode.rowIndex)">close</span></td>
                         </tr>
-                        <tr> <!--Linha-->
+                        <tr>
+                            <!--Linha-->
                             <td>usuariox</td>
                             <td>Fulano de tal</td>
+                            <td><span class="material-icons-outlined btnRemover" onclick="deleteRow(this.parentNode.parentNode.rowIndex)">close</span></td>
                         </tr>
                     </table>
                 </div>
@@ -82,9 +117,21 @@
             <button class="voltar">Voltar</button>
             <button class="cadastrar">Cadastrar</button>
         </div>
-
         <footer id="rodape">
             &copy; Copyright 2022 - by Erick Santos, Igor Primo e Valmir Cunha
         </footer>
+
+        <script>
+            function deleteRow(i) {
+                document.getElementById('tabela').deleteRow(i)
+                // var tabela = document.getElementById('tabela').style.display;
+                // var tamanhoTabela = document.getElementById('tabela').rows.length;
+                // console.log(tamanhoTabela);
+                // if(tamanhoTabela === 1){
+                //     tabela.style.display = 'none';
+                // }
+            }
+        </script>
 </body>
+
 </html>

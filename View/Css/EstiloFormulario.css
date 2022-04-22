@@ -26,6 +26,12 @@ button{
     cursor: pointer;
 }
 
+label{
+    display: inline-block;
+    margin-bottom: 1em;
+    margin-right: 0.5em;
+}
+
 button.voltar {
     margin-left: 20%;
 }
