@@ -54,24 +54,21 @@
     color: black;
 }
 
-button.voltar{
-    margin-top: 2em;
-    margin-left: 27em;
+button{
+    position: relative;
     font-size: 10pt;
+    margin-top: 2em;
     background-color: blue;
     color: #dddddd;
     border-radius: 5px;
-    padding: 5px 10px 5px 10px; /*top,right,bottom,left*/
+    padding: 5px 10px 5px 10px;            /*top,right,bottom,left*/  
     cursor: pointer;
 }
 
+button.voltar{
+    margin-left: 27em;
+}
+
 button.avaliacoes{
-    margin-top: 2em;
     margin-left: 5em;
-    font-size: 10pt;
-    background-color: blue;
-    color: #dddddd;
-    border-radius: 5px;
-    padding: 5px 10px 5px 10px; /*top,right,bottom,left*/
-    cursor: pointer;
 }

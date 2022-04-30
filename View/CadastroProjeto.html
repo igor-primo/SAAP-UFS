@@ -1,13 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="/Icons/LogoColoridoSemFundo.ico" type="image/x-icon">
+    <link rel="stylesheet" href="/View/Css/Cabecalho.css">
+    <link rel="stylesheet" href="/View/Css/EstruturaPrincipal.css">
+    <link rel="stylesheet" href="/View/Css/Footer.css">
+    <link rel="stylesheet" href="/View/Css/EstiloFormulario.css">
     <title>Cadastro Projeto</title>
 </head>
+
 <body>
-    
+    <header id="cabecalho" aria-orientation="horizontal">
+        <a href="/View/PaginaPrincipal.html">
+            <img src="/Image/UfsLogo.png" class="imagem" alt="LogoUfs">
+        </a>
+        <nav id="menu">
+            <ul>
+                <li><a href="PaginaPrincipal.html">Página principal</a></li>
+                <li><a href="Perfil.html">Perfil</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div id="corpo">
+        <h1 style="text-align: center;">Cadastra Projeto</h1>
+        <div class="formularioProjeto">
+            <form action="">
+                <div class="campo">
+                    <label for="nomeProjeto">Nome do projeto:</label>
+                    <input type="text" class="nomeProjeto">
+                </div>
+                <div class="campo">
+                    <label for="dataApresentacao">Data de apresentação:</label>
+                    <input type="date" name="data" id="dataApresentacao">
+                </div>
+                <div class="campo">
+                    <label for="">Tipo de projeto:</label>
+                    <input type="radio" name="tipoProjeto" id="individual">
+                    <label for="individual">Individual</label>
+                    <input type="radio" name="tipoProjeto" id="grupo">
+                    <label for="grupo">Grupo</label>
+                </div>
+                <div class="campo">
+                    <label for="tipoNota">Tipo de nota:</label>
+                    <select name="tiposCalculo" required>
+                        <option value="1">Aritmética</option>
+                        <option value="1">Ponderada</option>
+                    </select>
+                    <h4>Se o tipo de calculo foi "Ponderado", escolha os pessos para cada tipo de avaliador:</h4>
+                    <label for="">Professor:</label>
+                    <input type="number" class="pesoProfessor" max="10" min="0">
+                    <label for="pesoAluno">Aluno:</label>
+                    <input type="number" class="pesoAluno" max="10" min="0">
+                </div>
+            </form>
+            <button class="voltar">Voltar</button>
+            <button class="cadastrar">Cadastrar</button>
+        </div>
+
+        <footer id="rodape">
+            &copy; Copyright 2022 - by Erick Santos, Igor Primo e Valmir Cunha
+        </footer>
+    </div>
 </body>
+
 </html>
