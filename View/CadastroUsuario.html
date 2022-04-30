@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="/Icons/LogoColoridoSemFundo.ico" type="image/x-icon">
     <link rel="stylesheet" href="/View/Css/Cabecalho.css">
+    <link rel="stylesheet" href="/View/Css/EstruturaPrincipal.css">
+    <link rel="stylesheet" href="/View/Css/CadastroUsuario.css">
     <title>Cadastro</title>
 </head>
 <body>
@@ -15,10 +17,51 @@
         </a>
         <nav id="menu" > 
             <ul>
+                <li><a href="">Página inicial</a></li>
                 <li><a href="">Entrar</a></li> 
                 <li><a href="">Ajuda</a></li> 
             </ul>
         </nav>
     </header>
+    <div id = "corpo">
+        <section class="Formulario" id="Formulario">
+            <form action="" method="post">
+                <div>
+                    <h2 class="titulo"><center>Cadastrar usuário</center></h2>
+                </div>
+                <div>
+                    <label for="name">Nome:*</label>
+                    <input type="text" id="name" />
+                </div>
+                <div>
+                    <label for="mail">E-mail:*</label>
+                    <input type="email" id="mail" />
+                </div>
+                <div>
+                    <label for="password">Senha:*</label>
+                    <input type="password" id="pass" name="password"
+                    minlength="8" required>
+                </div>
+                <div>
+                    <input type="radio" name="cargo" id="professor">
+                    <label for="professor">Professor</label> 
+                    <br>
+                    <input type="radio" name="cargo" id="aluno">
+                    <label for="aluno">Aluno</label>
+                </div>
+                <div>
+                    <label for="password">Matrícula:*</label>
+                    <input id="pass"></input>
+                </div>
+                <div>
+                <button class="button">Cadastrar</button>
+                </div>
+            </form>
+        </section>
+        <br/>
+        <footer id = "footer">
+            &copy; Copyright 2021 - by Erick Santos, Igor Primo e Valmir Cunha
+        </footer>
+    </div>
 </body>
 </html>

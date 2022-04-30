@@ -5,9 +5,39 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="/Icons/LogoColoridoSemFundo.ico" type="image/x-icon">
-    <title>Document</title>
+    <link rel="stylesheet" href="/View/Css/Cabecalho.css">
+    <link rel="stylesheet" href="/View/Css/Login.css">
+    <title>Cadastro</title>
 </head>
 <body>
-    
+    <header>
+    </header>
+    <div id = "corpo">
+        <section class="Formulario" id="Formulario">
+            <form action="" method="post">
+                <div>
+                    <a href="/View/PaginaPrincipal.html">
+                        <center><img src="/Image/UfsLogo.png" class="imagem" alt="LogoUfs"></center>
+                    </a>
+                </div>
+                <div>
+                    <h2 class="titulo"><center>Cadastrar usuário</center></h2>
+                </div>
+                <div>
+                    <label for="name">Usuario:</label>
+                    <input type="text" id="user" />
+                </div>
+                <div>
+                    <label for="password">Senha:</label>
+                    <input type="password" id="pass" name="password"
+                    minlength="8" required>
+                </div>
+                <div>
+                <button class="button">Entrar</button>
+                </div>
+            </form>
+        </section>
+        <br/>
+    </div>
 </body>
 </html>
