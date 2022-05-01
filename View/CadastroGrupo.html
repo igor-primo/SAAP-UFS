@@ -12,44 +12,7 @@
     <link rel="stylesheet" href="/View/Css/EstruturaPrincipal.css">
     <link rel="stylesheet" href="/View/Css/Footer.css">
     <link rel="stylesheet" href="/View/Css/EstiloFormulario.css">
-    <style>
-        table,
-        th,
-        td {
-            border: 1px solid black;
-            border-collapse: collapse;
-            /*Tira os espaços entre as células*/
-            padding: 5px 10px;
-        }
-
-        th {
-            background-color: #0000CD;
-            color: white;
-        }
-
-        /*Muda a cor da linhas impares para cinza*/
-        table tr:nth-child(odd) {
-            background-color: #ddd;
-        }
-
-        input,
-        .btnRemover {
-            padding: auto;
-            cursor: pointer;
-        }
-
-        input[type="button"]{
-            margin-left: 1em;
-            font-size: 10pt;
-            background-color: blue;
-            color: #dddddd;
-            border-radius: 5px;
-            padding: 2px 10px; 
-        }
-        .tabelaIntegrantes{
-            margin-left: 21%;
-        }
-    </style>
+    <link rel="stylesheet" href="/View/Css/Tabela.css">
     <title>Cadastro Grupo</title>
 </head>
 
@@ -81,7 +44,7 @@
                 <div class="campo">
                     <label for="integrante">Integrante:</label>
                     <input type="text" name="data" id="integrante" placeholder="Digite o usuário do aluno">
-                    <input type="button" value="Adicionar" >
+                    <input type="button" value="Adicionar">
                 </div>
                 <label for="">Lista de integrantes:</label>
                 <div class="tabelaIntegrantes">
@@ -97,19 +60,22 @@
                             <td>usuariox</td>
                             <td>Fulano de tal</td>
                             <!-- <td><input type="button" value="Delete" onclick="deleteRow(this.parentNode.parentNode.rowIndex)"></td> -->
-                            <td><span class="material-icons-outlined btnRemover" onclick="deleteRow(this.parentNode.parentNode.rowIndex)">close</span></td>
+                            <td><span class="material-icons-outlined btnRemover"
+                                    onclick="deleteRow(this.parentNode.parentNode.rowIndex)">close</span></td>
                         </tr>
                         <tr>
                             <!--Linha-->
                             <td>usuariox</td>
                             <td>Fulano de tal</td>
-                            <td><span class="material-icons-outlined btnRemover" onclick="deleteRow(this.parentNode.parentNode.rowIndex)">close</span></td>
+                            <td><span class="material-icons-outlined btnRemover"
+                                    onclick="deleteRow(this.parentNode.parentNode.rowIndex)">close</span></td>
                         </tr>
                         <tr>
                             <!--Linha-->
                             <td>usuariox</td>
                             <td>Fulano de tal</td>
-                            <td><span class="material-icons-outlined btnRemover" onclick="deleteRow(this.parentNode.parentNode.rowIndex)">close</span></td>
+                            <td><span class="material-icons-outlined btnRemover"
+                                    onclick="deleteRow(this.parentNode.parentNode.rowIndex)">close</span></td>
                         </tr>
                     </table>
                 </div>

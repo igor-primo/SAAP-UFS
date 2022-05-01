@@ -1,29 +1,133 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="/Icons/LogoColoridoSemFundo.ico" type="image/x-icon">
     <link rel="stylesheet" href="/View/Css/Cabecalho.css">
-    <link rel="stylesheet" href="/View/Css/CardDiciplina.css">
+    <link rel="stylesheet" href="/View/Css/EstruturaPrincipal.css">
+    <link rel="stylesheet" href="/View/Css/EstiloFormulario.css">
+    <link rel="stylesheet" href="/View/Css/Tabela.css">
+    <link rel="stylesheet" href="/View/Css/CadastroDiciplina.css">
     <link rel="stylesheet" href="/View/Css/Footer.css">
     <title>Cadastro Disciplina</title>
 </head>
+
 <body>
     <header id="cabecalho" aria-orientation="horizontal">
-        <img src="/Image/UfsLogo.png" class="imagem" alt="LogoUfs" >
-        <nav id="menu" > <!-- Determina um menu de navegação, tudo que estiver dentro dessa tag será considerada parte do menu -->
+        <img src="/Image/UfsLogo.png" class="imagem" alt="LogoUfs">
+        <nav id="menu">
+            <!-- Determina um menu de navegação, tudo que estiver dentro dessa tag será considerada parte do menu -->
             <ul>
-                <li><a href="CadastroDisciplina.html">Cadastrar Disciplina</a></li> 
-                <li><a href="Perfil.html">Perfil</a></li> 
+                <li><a href="CadastroDisciplina.html">Cadastrar Disciplina</a></li>
+                <li><a href="Perfil.html">Perfil</a></li>
             </ul>
-    </nav>
+        </nav>
     </header>
-    <div id = "corpo">
-        <footer id = "rodape">
+    <div id="corpo">
+        <h1 style="text-align: center;">Cadastra Projeto</h1>
+        <div class="formularioDisciplina">
+            <form action="">
+                <div class="campo">
+                    <label for="nomeDisciplina">Nome da Disciplina:</label>
+                    <input type="text" class="nomeDisciplina">
+                </div>
+                <div class="campo">
+                    <label for="periodo">Período:</label>
+                    <input type="number" id="periodo">
+                </div>
+                <div class="campo">
+                    <label for="professoresResponsavel">Professor:</label>
+                    <input type="text" id="professoresResponsavel">
+                </div>
+                <div class="campo">
+                    <label for="alunos">Alunos:</label>
+                    <input type="text" id="alunos">
+                </div>
+            </form>
+            <button class="voltar">Voltar</button>
+            <button class="cadastrar">Cadastrar</button>
+        </div>
+        <div class="tabelaProfessores">
+            <h3>Professores:</h3>
+            <table id="tabelaProfessores">
+                <tr class="titulos">
+                    <!--Linha-->
+                    <th>Usuário</th>
+                    <th>Nome</th>
+                    <th>Remover</th>
+                </tr>
+                <tr>
+                    <!--Linha-->
+                    <td>usuariox</td>
+                    <td>Nota aqui</td>
+                    <td><input type="button" value="Delete"
+                            onclick="apagarProfessor(this.parentNode.parentNode.rowIndex)"></td>
+                </tr>
+                <tr>
+                    <!--Linha-->
+                    <td>usuariox</td>
+                    <td>Fulano</td>
+                    <td><input type="button" value="Delete"
+                            onclick="apagarProfessor(this.parentNode.parentNode.rowIndex)"></td>
+                </tr>
+                <tr>
+                    <!--Linha-->
+                    <td>usuariox</td>
+                    <td>Nota aqui</td>
+                    <td><input type="button" value="Delete"
+                            onclick="apagarProfessor(this.parentNode.parentNode.rowIndex)"></td>
+                </tr>
+            </table>
+        </div>
+        <div class="tabelaAlunos">
+            <h3>Alunos:</h3>
+            <table id="tabelaAlunos">
+                <tr class="titulos">
+                    <!--Linha-->
+                    <th>Usuário</th>
+                    <th>Nome</th>
+                    <th>Remover</th>
+                </tr>
+                <tr>
+                    <!--Linha-->
+                    <td>usuariox</td>
+                    <td>Nota aqui</td>
+                    <td><input type="button" value="Delete" onclick="apagarAluno(this.parentNode.parentNode.rowIndex)">
+                    </td>
+                </tr>
+                <tr>
+                    <!--Linha-->
+                    <td>usuariox</td>
+                    <td>Nota aqui</td>
+                    <td><input type="button" value="Delete" onclick="apagarAluno(this.parentNode.parentNode.rowIndex)">
+                    </td>
+                </tr>
+                <tr>
+                    <!--Linha-->
+                    <td>usuariox</td>
+                    <td>Nota aqui</td>
+                    <td><input type="button" value="Delete" onclick="apagarAluno(this.parentNode.parentNode.rowIndex)">
+                    </td>
+                </tr>
+            </table>
+        </div>
+        
+        <footer id="rodape">
             &copy; Copyright 2022 - by Erick Santos, Igor Primo e Valmir Cunha
         </footer>
     </div>
 </body>
+<script>
+    function apagarProfessor(i) {
+        document.getElementById('tabelaProfessores').deleteRow(i)
+    }
+
+    function apagarAluno(i) {
+        document.getElementById('tabelaAlunos').deleteRow(i)
+    }
+</script>
+
 </html>

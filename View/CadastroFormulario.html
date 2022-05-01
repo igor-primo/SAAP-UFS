@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,36 +9,58 @@
     <link rel="stylesheet" href="/View/Css/Cabecalho.css">
     <link rel="stylesheet" href="/View/Css/EstruturaPrincipal.css">
     <link rel="stylesheet" href="/View/Css/Footer.css">
+    <link rel="stylesheet" href="/View/Css/CadastroFormularioAvaliacao.css">
     <title>Cadastro Formulario</title>
 </head>
+
 <body>
     <header id="cabecalho" aria-orientation="horizontal">
         <a href="/View/PaginaPrincipal.html">
-            <img src="/Image/UfsLogo.png" class="imagem" alt="LogoUfs" >
+            <img src="/Image/UfsLogo.png" class="imagem" alt="LogoUfs">
         </a>
-        <nav id="menu" > <!-- Determina um menu de navegação, tudo que estiver dentro dessa tag será considerada parte do menu -->
+        <nav id="menu">
+            <!-- Determina um menu de navegação, tudo que estiver dentro dessa tag será considerada parte do menu -->
             <ul>
-                <li><a href="CadastroDisciplina.html">Cadastrar Disciplina</a></li> 
-                <li><a href="Perfil.html">Perfil</a></li> 
+                <li><a href="CadastroDisciplina.html">Cadastrar Disciplina</a></li>
+                <li><a href="Perfil.html">Perfil</a></li>
             </ul>
-    </nav>
+        </nav>
     </header>
-    <div id = "corpo">
-        <h1>Formulário de Avaliação</h1>
-        <div class="topico">
-            <ul>
-                <li>Criterio 1</li> 
-                <li>Criterio 2</li> 
-            </ul>
-            <h3>Nome do tópico</h3>
-            <section class="criterio">
-                <h4>Relevância e profundidade do tema escolhido </h4>
-                <label for="nota">Nota:</label>
-            </section>
+    <div id="corpo">
+        <h1 style="text-align: center;">Cadastra Projeto</h1>
+        <div class="formularioAvaliacaoProjeto">
+            <form action="" class="formularioTopico">
+                <div class="funcAdicionar">
+                    <div class="nomeTopico">
+                        <label for="Nome do tópico">Nome do projeto:</label>
+                        <input type="text" class="nomeProjeto">
+                    </div>
+                    <div class="criterio">
+                        <label for="nomeCriterio">Nome do criterio x:</label>
+                        <input type="text" id="nomeCriterio">
+                    </div>
+                </div>
+                <!-- <input type="button" value="Adicionar Critério" >
+                <input type="button" value="Adicionar Tópico"> -->
+                <button onclick="adicionarTopico()">Adicionar Tópico</button>
+            </form>
+            <button class="voltar">Voltar</button>
+            <button class="cadastrar">Cadastrar</button>
+            <footer id="rodape">
+                &copy; Copyright 2022 - by Erick Santos, Igor Primo e Valmir Cunha
+            </footer>
         </div>
-        <footer id = "rodape">
-            &copy; Copyright 2022 - by Erick Santos, Igor Primo e Valmir Cunha
-        </footer>
-    </div>
 </body>
+
+<script>
+    function adicionarTopico() {
+
+    }
+
+    function adicionarCriterio() {
+
+    }
+
+</script>
+
 </html>

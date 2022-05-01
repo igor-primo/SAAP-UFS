@@ -1,0 +1,91 @@
+@charset "UTF-8";
+
+.topico{
+    display: block;
+    align-items: center;
+    text-align: center;
+}
+
+h1{
+    text-align: center;
+}
+p{
+    border-bottom: 1px solid;
+}
+
+h3{
+    text-align: center;
+}
+
+.criterio {
+    width: 50vw;
+    /*"vw" = view width , quanto do tamanho da tela*/
+    margin: 10;
+    display: block;
+    max-width: 900px;
+}
+
+
+.cardscriterio {
+    max-width: 500px;
+    background: #dddddd;
+    border-radius: 5px;
+    height: 100%;
+    padding: 15px;
+    margin: 15px 0 0 auto; /*top,right,bottom,left*/
+}
+
+.conteudoCard {
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.conteudoCard ul{
+    list-style: none;
+}
+
+.conteudoCard ul li{
+    display: inline-block;
+}
+
+.conteudoCard ul li button{
+    display: inline-block;
+    margin-left: 250px;
+    font-size: 10pt;
+    background-color: blue;
+    color: #dddddd;
+    border-radius: 5px;
+    padding: 2px 10px 2px 10px; /*top,right,bottom,left*/
+    cursor: pointer;
+}
+
+.conteudoCard a {
+    text-decoration: none;
+}
+
+.conteudoCard h5{
+    font-size: 14pt;
+    margin: 1px;
+    color: black;
+}
+
+button{
+    position: relative;
+    font-size: 10pt;
+    margin-top: 2em;
+    background-color: blue;
+    color: #dddddd;
+    border-radius: 5px;
+    padding: 5px 10px 5px 10px;            /*top,right,bottom,left*/  
+    cursor: pointer;
+}
+
+button.voltar{
+    margin-left: 27em;
+}
+
+button.avaliacoes{
+    margin-left: 5em;
+}
