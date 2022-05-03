@@ -1,9 +1,3 @@
-.formularioProjeto, .formularioGrupo,.formularioAvaliacaoProjeto {
-    margin-left: 20%;
-    margin-top: 3%;
-    display: block;
-}
-
 .formularioAvaliacaoProjeto{
     border-top: 1px solid;
 }
@@ -13,9 +7,9 @@ button {
     border-radius: 5px;
 }
 
-.campo {
+.nomeTopico,
+.criterio {
     margin-top: 1em;
-    margin-bottom: 1em;
 }
 
 button,
