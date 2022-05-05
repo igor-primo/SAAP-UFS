@@ -5,9 +5,50 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="/Icons/LogoColoridoSemFundo.ico" type="image/x-icon">
-    <title>Perfil</title>
+    <link rel="stylesheet" href="/View/Css/Cabecalho.css">
+    <link rel="stylesheet" href="/View/Css/EstruturaPrincipal.css">
+    <link rel="stylesheet" href="/View/Css/Perfil.css">
+    <title>Cadastro</title>
 </head>
 <body>
-    
+    <header id="cabecalho" aria-orientation="horizontal">
+        <a href="/View/PaginaPrincipal.html">
+            <img src="/Image/UfsLogo.png" class="imagem" alt="LogoUfs" >
+        </a>
+        <nav id="menu" > 
+            <ul>
+                <li><a href="">Página inicial</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div id = "corpo">
+        <section class="Formulario" id="Formulario">
+            <form action="" method="post">
+                <div>
+                    <h2 class="titulo"><center>Perfil</center></h2>
+                </div>
+                <div>
+                    <label for="name">Nome:</label>
+                    <!-- dados aqui -->
+                </div>
+                <div>
+                    <label for="mail">E-mail:</label>
+                    <!-- dados aqui -->
+                </div>
+                <div>
+                    <label for="password">Matrícula:</label>
+                    <!-- dados aqui -->
+                </div>
+                <div>
+                <button class="buttonVoltar">Voltar</button>
+                <button class="buttonEditar">Editar</button>
+                </div>
+            </form>
+        </section>
+        <br/>
+        <footer id = "footer">
+            &copy; Copyright 2021 - by Erick Santos, Igor Primo e Valmir Cunha
+        </footer>
+    </div>
 </body>
 </html>
