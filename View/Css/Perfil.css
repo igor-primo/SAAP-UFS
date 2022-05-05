@@ -1,11 +1,14 @@
-form {
-    /* Apenas para centralizar o form na página */
+/* form {
+    /* Apenas para centralizar o form na página
     margin: 0 auto;
     width: 400px;
-}
+} */
+
+
 
 form div + div {
     margin-top: 1.5em;
+    float: center;
 }
 
 label {
@@ -17,7 +20,7 @@ label {
 
 input, textarea {
     /* Para certificar-se que todos os campos de texto têm as mesmas configurações de fonte. Por padrão, textareas ter uma fonte monospace*/
-    font: 0.8em sans-serif;
+    font: 0.5em sans-serif;
 
     /* Para dar o mesmo tamanho a todos os campo de texto */
     width: 300px;
@@ -27,6 +30,19 @@ input, textarea {
 
     /* Para harmonizar o look & feel das bordas nos campos de texto*/
     border: 1px solid #999;
+}
+
+.radio{
+    font: 0.5em sans-serif;
+}
+
+.button{
+    font-size: 10pt;
+    background-color: blue;
+    color: #dddddd;
+    border-radius: 5px;
+    padding: 5px 10px 5px 10px; /*top,right,bottom,left*/
+    cursor: pointer;
 }
 
 .buttonVoltar {
