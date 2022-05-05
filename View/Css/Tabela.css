@@ -1,0 +1,37 @@
+table,
+th,
+td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    /*Tira os espaços entre as células*/
+    padding: 5px 10px;
+}
+
+th {
+    background-color: #0000CD;
+    color: white;
+}
+
+/*Muda a cor da linhas impares para cinza*/
+table tr:nth-child(odd) {
+    background-color: #ddd;
+}
+
+input,
+.btnRemover {
+    padding: auto;
+    cursor: pointer;
+}
+
+input[type="button"] {
+    margin-left: 1em;
+    font-size: 10pt;
+    background-color: blue;
+    color: #dddddd;
+    border-radius: 5px;
+    padding: 2px 10px;
+}
+
+.tabelaIntegrantes {
+    margin-left: 21%;
+}
