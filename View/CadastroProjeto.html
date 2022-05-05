@@ -47,54 +47,58 @@
             </div>
         </nav>
     </header>
-    <div id="corpo">
-        <h1 style="text-align: center;">Cadastra Projeto</h1>
-        <div class="formularioProjeto">
-            <form action="">
-                <div class="campo">
-                    <label for="nomeProjeto">Nome do projeto:</label>
-                    <input type="text" class="nomeProjeto">
+    <div class="container">
+        <div class="p-3 mb-2 bg-light text-dark">
+          <h3><center>Cadastro de projeto</center></h3>
+          <form action="" method="post">
+            <br>
+            <div class="input-group mb-3">
+              <span class="input-group-text" id="basic-addon1">Nome</span>
+              <input type="text" class="form-control" placeholder="Nome do projeto" aria-label="Username" aria-describedby="basic-addon1">
+            </div>
+            <div class="input-group mb-3">
+              <span class="input-group-text" id="basic-addon1">Data de apresentação</span>
+              <input id="date" type="date" class="form-control" placeholder="Endereço de email" aria-label="Email" aria-describedby="basic-addon1">
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                <label class="form-check-label" for="inlineRadio1">Individual</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                <label class="form-check-label" for="inlineRadio2">Grupo</label>
+              </div>
+              <select class="form-select" aria-label="Default select example">
+                <option selected>Clique aqui para selecionar o tipo de nota</option>
+                <option value="1">Aritmética</option>
+                <option value="2">Ponderada</option>
+              </select>
+              <br>
+              <h6>Se o tipo de calculo foi "Ponderado", escolha os pesos para cada tipo de avaliador:</h6>
+              <div class="row">
+                <div class="col">
+                  <input type="text" class="form-control" placeholder="Professor">
                 </div>
-                <div class="campo">
-                    <label for="dataApresentacao">Data de apresentação:</label>
-                    <input type="date" name="data" id="dataApresentacao">
+                <div class="col">
+                  <input type="text" class="form-control" placeholder="Aluno">
                 </div>
-                <div class="campo">
-                    <label for="">Tipo de projeto:</label>
-                    <input type="radio" name="tipoProjeto" id="individual">
-                    <label for="individual">Individual</label>
-                    <input type="radio" name="tipoProjeto" id="grupo">
-                    <label for="grupo">Grupo</label>
-                </div>
-                <div class="campo">
-                    <label for="tipoNota">Tipo de nota:</label>
-                    <select name="tiposCalculo" required>
-                        <option value="1">Aritmética</option>
-                        <option value="1">Ponderada</option>
-                    </select>
-                    <h4>Se o tipo de calculo foi "Ponderado", escolha os pessos para cada tipo de avaliador:</h4>
-                    <label for="">Professor:</label>
-                    <input type="number" class="pesoProfessor" max="10" min="0">
-                    <label for="pesoAluno">Aluno:</label>
-                    <input type="number" class="pesoAluno" max="10" min="0">
-                </div>
-            </form>
-            <button class="voltar">Voltar</button>
-            <button class="cadastrar">Cadastrar</button>
+              <div>
+                <center>
+                  <button type="button" class="btn btn-primary" href="Ajuda.html">Voltar</button>
+                  <button type="submit" class="btn btn-primary">Cadastrar</button>
+                </center>
+              </div>
+            </div>
+          </form>
+          <footer id="rodape">
+            <center>
+              &copy; Copyright 2022 - by Erick Santos, Igor Primo e Valmir Cunha
+            </center>
+          </footer>
         </div>
-
-        <footer id="rodape">
-            &copy; Copyright 2022 - by Erick Santos, Igor Primo e Valmir Cunha
-        </footer>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
-        integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
-        integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
         crossorigin="anonymous"></script>
 </body>
 

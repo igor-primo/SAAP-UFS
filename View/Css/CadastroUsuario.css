@@ -28,17 +28,6 @@ input, textarea {
     /* Para harmonizar o look & feel das bordas nos campos de texto*/
     border: 1px solid #999;
 }
-
-.button {
-    margin-top: 2em;
-    margin-left: 12em;
-    font-size: 10pt;
-    background-color: blue;
-    color: #dddddd;
-    border-radius: 5px;
-    padding: 5px 10px 5px 10px; /*top,right,bottom,left*/
-    cursor: pointer;
-  }
   
 #checkbox{
     font: 5em sans-serif;
