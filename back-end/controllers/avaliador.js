@@ -12,8 +12,20 @@ const get_users = asyncWrapper(async (req, res) => {
 
 });
 
+const post_users = asyncWrapper(async (req, res) => {
+
+	const id_us = req.body.id_us;
+	const id_disc = req.body.id_disc;
+
+	await models.post_users(id_us, id_disc);
+
+	return res.status(201).send();
+
+});
+
 module.exports = {
 
-	get_users
+	get_users,
+	post_users
 
 };

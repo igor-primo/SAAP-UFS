@@ -89,7 +89,7 @@ async function get_formularios_cadastrados(id_proj){
 			WHERE p.id = $1;`,
 			[ id_proj ]
 		);
-		const id_form = query_id_form.rows[0]id;
+		const id_form = query_id_form.rows[0].id;
 		const query_secao_quest = db.query(
 			`SELECT sq.id, sq.nome_sec FROM
 				secao_quest AS sq
