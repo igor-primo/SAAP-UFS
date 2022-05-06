@@ -1,0 +1,32 @@
+{
+  "name": "saap-ufs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Valmir-Cunha/SAAP-UFS.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Valmir-Cunha/SAAP-UFS/issues"
+  },
+  "homepage": "https://github.com/Valmir-Cunha/SAAP-UFS#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.20.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.3",
+    "express-session": "^1.17.2",
+    "nodemon": "^2.0.15",
+    "passport": "^0.5.2",
+    "passport-jwt": "^4.0.0",
+    "pg": "^8.7.3",
+    "swagger-ui-express": "^4.3.0"
+  }
+}
