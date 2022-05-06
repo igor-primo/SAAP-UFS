@@ -11,7 +11,6 @@
     <link rel="stylesheet" href="Css/Cabecalho.css">
     <link rel="stylesheet" href="Css/EstruturaPrincipal.css">
     <link rel="stylesheet" href="Css/Footer.css">
-    <link rel="stylesheet" href="Css/FormularioAvaliacao.css">
     <title>Avaliação</title>
 </head>
 
@@ -20,8 +19,8 @@
         <nav class="navbar navbar-expand-lg navbar-dark">
             <!--Tirei essa classe: bg-light para aplicar a cor ||| Troquei navbar-light por navbar-dark para os textos ficarem brancos -->
             <div class="container-fluid ">
-                <a class="navbar-brand" href="PaginaPrincipal.html"><img src="/front-end/Image/UfsLogo.png" class="imagem"
-                        alt="LogoUfs"></a>
+                <a class="navbar-brand" href="PaginaPrincipal.html"><img src="/front-end/Image/UfsLogo.png"
+                        class="imagem" alt="LogoUfs"></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -45,27 +44,29 @@
         </nav>
     </header>
     <div id="corpo">
-        <h1>Formulário de Avaliação</h1>
+        <div class="text-center">
+            <h1>Formulário de Avaliação</h1>
+        </div>
         <p>Numeros de critérios a serem avaliados: </p>
-        <div class="topico">
-            <h3>Nome do tópico</h3>
-            <section class="criterio">
-                <div class="cardscriterio">
-                    <div class="conteudoCard">
-                        <ul>
-                            <li>
-                                <a href="">
-                                    <h4>Relevância e profundidade do tema escolhido </h4>
-                                </a>
-                            </li>
-                            <li>
-                                <label for="nota">Nota:</label>
-                                <input type="number" class="nota">
-                            </li>
-                        </ul>
+        <div class="topico text-center">
+            <h3>1. Nome do tópico</h3>
+                <h4 class="text-start ms-3 me-3">Criterio x</h4>
+                    <div class="row g-3 align-items-center ms-3 me-3 mt-2">
+                        <div class="col-auto">
+                            <label for="nota" class="col-form-label">Nota:</label>
+                        </div>
+                        <div class="col-auto">
+                            <input type="number" id="nota" class="form-control" max="10" min="0">
+                        </div>
+                        <div class="col-auto">
+                            <span id="valueHelpInline" class="form-text">
+                                Valores de 0 - 10.
+                            </span>
+                        </div>
                     </div>
-                </div>
-            </section>
+        </div>
+        <div class="text-center">
+            <input type="submit" class="btn btn-primary" value="Enviar" ></input>
         </div>
         <footer id="rodape">
             &copy; Copyright 2022 - by Erick Santos, Igor Primo e Valmir Cunha
