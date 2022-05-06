@@ -12,7 +12,7 @@
     <!--Google icons-->
     <link rel="stylesheet" href="Css/Cabecalho.css">
     <link rel="stylesheet" href="Css/EstruturaPrincipal.css">
-    <link rel="stylesheet" href="Css/CardGrupo.css">
+    <link rel="stylesheet" href="/front-end/View/Css/CardGrupo.css">
     <link rel="stylesheet" href="Css/Footer.css">
     <title>Projeto</title>
 </head>
@@ -22,7 +22,7 @@
         <nav class="navbar navbar-expand-lg navbar-dark">
             <!--Tirei essa classe: bg-light para aplicar a cor ||| Troquei navbar-light por navbar-dark para os textos ficarem brancos -->
             <div class="container-fluid ">
-                <a class="navbar-brand" href="/View/PaginaPrincipal.html"><img src="/Image/UfsLogo.png" class="imagem"
+                <a class="navbar-brand" href="PaginaPrincipal.html"><img src="/front-end/Image/UfsLogo.png" class="imagem"
                         alt="LogoUfs"></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -32,7 +32,7 @@
                     <!--Para alinhar na direita o nav-->
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="/View/PaginaPrincipal.html">Página
+                            <a class="nav-link active" aria-current="page" href="PaginaPrincipal.html">Página
                                 Principal</a>
                         </li>
                         <li class="nav-item dropstart">
@@ -69,23 +69,23 @@
         
         <h1 style="text-align: center;">Projeto X</h1>
         <section class="Grupos">
-            <div class="card w-50 text-center center-block">
+            <div class="card w-50 text-center cardGrupo">
                 <div class="card-body">
                   <h5 class="card-title">Grupo X</h5>
                   <p class="card-text">Tema: Nome do tema</p>
-                  <a href="#" class="btn btn-primary">Avaliar</a>
+                  <a href="Avaliacao.html" class="btn btn-primary">Avaliar</a>
                 </div>
             </div>
-            <div class="card w-50 text-center">
+            <div class="card w-50 text-center cardGrupo">
                 <div class="card-body">
                   <h5 class="card-title">Grupo X</h5>
                   <p class="card-text">Tema: Nome do tema</p>
-                  <a href="#" class="btn btn-primary">Avaliar</a>
+                  <a href="Avaliacao.html" class="btn btn-primary">Avaliar</a>
                 </div>
             </div>
             <div class="text-center">
                 <button type="submit" class="btn btn-primary" style="margin: 2em;" >Voltar</button>
-                <button type="submit" class="btn btn-primary">Vizualizar avaliações</button>
+                <a href="Avaliacao.html" class="btn btn-primary">Vizualizar avaliações</a>
             </div>
         </section>
         <footer id="rodape">
