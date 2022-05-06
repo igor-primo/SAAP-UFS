@@ -17,7 +17,8 @@
 
 <body>
     <header id="cabecalho" aria-orientation="horizontal">
-        <nav class="navbar navbar-expand-lg navbar-dark"> <!--Tirei essa classe: bg-light para aplicar a cor ||| Troquei navbar-light por navbar-dark para os textos ficarem brancos -->
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <!--Tirei essa classe: bg-light para aplicar a cor ||| Troquei navbar-light por navbar-dark para os textos ficarem brancos -->
             <div class="container-fluid ">
                 <a class="navbar-brand" href="/View/PaginaPrincipal.html"><img src="/Image/UfsLogo.png" class="imagem"
                         alt="LogoUfs"></a>
@@ -25,10 +26,11 @@
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse justify-content-end" id="navbarNav"> <!--Para alinhar na direita o nav-->
+                <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                    <!--Para alinhar na direita o nav-->
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link active" href="Perfil.html">Cadastrar Disciplina</a>
+                            <a class="nav-link active" href="/View/CadastroDisciplina.html">Cadastrar Disciplina</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link active" href="Perfil.html">Perfil</a>
@@ -44,13 +46,24 @@
     <div id="corpo">
         <h1 class="titulo">Disciplinas:</h1>
         <section class="Disciplinas" id="Disciplinas">
-            <div class="card" style="width: 15em;">
-                <a href=""><img src="/Image/ufs_colorido_horizontal_positiva-830x370.png" class="card-img-top imagemDisciplina" alt="Logo Ufs"></a>
-                <div class="card-body text-center">
-                  <a style="text-decoration: none; color: black;" href=""><h5 class="card-title">Nome Disciplina</h5></a>
-                  <p class="card-text">Professor(a): Fulano</p>
-                  <p class="card-text">Horário:</p>
-                  <a href="#" class="btn btn-primary">Entrar</a>
+            <div id="1" class="card text-center" style="width: 15em;">
+                <div class="nav-item dropend text-end" style="font-weight: bold;">
+                    <a class="nav-link dropdown active text-dark" href="#" id="navbarDropdown" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">. . . 
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="#">Editar Disciplina</a></li>
+                        <li><a class="dropdown-item" href="#">Apagar Disciplina</a></li>
+                    </ul>
+                </div>
+                <a href=""><img src="/Image/ufs_colorido_horizontal_positiva-830x370.png"
+                        class="card-img-top imagemDisciplina" alt="Logo Ufs"></a>
+                <div class="card-body ">
+                    <a style="text-decoration: none; color: black;" href="">
+                        <h5 class="card-title">Nome Disciplina</h5></a>
+                    <p class="card-text">Professor(a): Fulano</p>
+                    <p class="card-text">Horário:</p>
+                    <a href="Disciplina.html" class="btn btn-primary">Entrar</a>
                 </div>
             </div>
         </section>
@@ -61,6 +74,15 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>
+        <script>
+            function editarDisciplina(){
+
+            }
+            function excluirDisciplina(){
+
+            }
+
+        </script>
 </body>
 
 </html>
