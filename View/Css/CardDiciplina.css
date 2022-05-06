@@ -9,47 +9,6 @@
   max-width: 900px;
 }
 
-.Disciplinas>div {
-  flex: 1 1 150px;
-}
-
-.cardsDisciplinas {
-  max-width: 220px;
-  border-style: solid;
-  border-radius: 5px;
-  height: 100%;
-  margin: 5px;
-  margin-bottom: 20px;
-  display: flexbox;
-  align-items: center;
-}
-
-.cardsDisciplinas img {
-  width: 90%;
-  margin-top: 1em;
-  margin-left: 0.7em;
-  margin-bottom: 0.3em;
-  border-radius: 5px;
-  /* display: flexbox; */
-  align-items: center;
-}
-
-.conteudoCard {
-  background: white;
-  height: 70%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  border-top: 1px #606060 solid;
-}
-
-.conteudoCard a {
-  text-decoration: none;
-}
-
-.conteudoCard h4 {
-  font-size: 15pt;
-  text-align: center;
-  margin: 1px;
-  color: black;
+.imagemDisciplina{
+  padding: 10px;
 }
