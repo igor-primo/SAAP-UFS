@@ -21,7 +21,7 @@
         <nav class="navbar navbar-expand-lg navbar-dark">
             <!--Tirei essa classe: bg-light para aplicar a cor ||| Troquei navbar-light por navbar-dark para os textos ficarem brancos -->
             <div class="container-fluid ">
-                <a class="navbar-brand" href="/View/PaginaPrincipal.html"><img src="/Image/UfsLogo.png" class="imagem"
+                <a class="navbar-brand" href="PaginaPrincipal.html"><img src="/front-end/Image/UfsLogo.png" class="imagem"
                         alt="LogoUfs"></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -31,11 +31,8 @@
                     <!--Para alinhar na direita o nav-->
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="/View/PaginaPrincipal.html">Página
+                            <a class="nav-link active" aria-current="page" href="PaginaPrincipal.html">Página
                                 Principal</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" href="CadastroDisciplina.html">Cadastrar Disciplina</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link active" href="Perfil.html">Perfil</a>
@@ -50,74 +47,39 @@
     </header>
     <div class="container">
         <div class="p-3 mb-2 bg-light text-dark">
-          <h3 class="text-center">Cadastro de grupo</h3>
-          <form action="" method="post">
-            <br>
-            <div class="input-group mb-3">
-              <span class="input-group-text" id="basic-addon1">Tema</span>
-              <input type="text" class="form-control" placeholder="Tema do grupo" aria-label="Username" aria-describedby="basic-addon1">
-            </div>
-            <div class="input-group mb-3">
-              <span class="input-group-text" id="basic-addon1">Data de apresentação</span>
-              <input id="date" type="date" class="form-control" placeholder="Endereço de email" aria-label="Email" aria-describedby="basic-addon1">
-            </div>
-            <div class="input-group mb-3">
-                <span class="input-group-text" id="basic-addon1">Usuário</span>
-                <input id = "new_user" type="text" class="form-control" placeholder="Digite o nome..." aria-label="Email" aria-describedby="basic-addon1">
-                <input type="button" class="btn btn-primary" value="Adicionar" onclick="">
-            </div>
-            <table id="tabela" class="table table-hover">
-                <thead>
-                  <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Usuário</th>
-                    <th scope="col">Nome</th>
-                    <th scope="col">Remover</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td style= "cursor: pointer;"><span class="material-icons-outlined btnRemover"
-                        onclick="deleteRow(this.parentNode.parentNode.rowIndex)">close</span></td>
-                  </tr>
-                  <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td style= "cursor: pointer;"><span class="material-icons-outlined btnRemover"
-                        onclick="deleteRow(this.parentNode.parentNode.rowIndex)">close</span></td>
-                  </tr>
-                  <tr>
-                    <th scope="row">3</th>
-                    <td colspan="2">Larry the Bird</td>
-                    <td style= "cursor: pointer;"><span class="material-icons-outlined btnRemover"
-                        onclick="deleteRow(this.parentNode.parentNode.rowIndex)">close</span></td>
-                  </tr>
-                </tbody>
-              </table>
-                  <br>
-                <div class="text-center">
-                  <input type="button" class="btn btn-primary" value="Voltar" onclick="history.go(-1)">
-                  <input type="submit" class="btn btn-primary" value="Cadastrar" ></input>
+            <h3 class="text-center">Cadastro de grupo</h3>
+            <form action="" method="post">
+                <br>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">Tema</span>
+                    <input type="text" class="form-control" placeholder="Tema do grupo" aria-label="Username"
+                        aria-describedby="basic-addon1">
                 </div>
-          </form>
-          <footer id="rodape">
-              &copy; Copyright 2022 - by Erick Santos, Igor Primo e Valmir Cunha
-          </footer>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">Data de apresentação</span>
+                    <input id="date" type="date" class="form-control" placeholder="Endereço de email" aria-label="Email"
+                        aria-describedby="basic-addon1">
+                </div>
+                <br>
+                <div class="text-center">
+                    <input type="button" class="btn btn-primary" value="Voltar" onclick="history.go(-1)">
+                    <input type="submit" class="btn btn-primary" value="Cadastrar"></input>
+                </div>
+            </form>
+            <footer id="rodape">
+                &copy; Copyright 2022 - by Erick Santos, Igor Primo e Valmir Cunha
+            </footer>
         </div>
     </div>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
 
-        <script>
-            function deleteRow(i) {
-                document.getElementById('tabela').deleteRow(i)
-            }
-        </script>
+    <script>
+        function deleteRow(i) {
+            document.getElementById('tabela').deleteRow(i)
+        }
+    </script>
 </body>
 
 </html>
