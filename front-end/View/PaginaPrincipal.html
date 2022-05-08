@@ -39,7 +39,7 @@
                             <a class="nav-link active" href="Ajuda.html">Ajuda</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="#">Sair</a>
+                            <a onclick="sair()" class="nav-link active" href="#">Sair</a>
                         </li>
                     </ul>
                 </div>
@@ -49,26 +49,6 @@
     <div id="corpo">
         <h1 class="titulo">Disciplinas:</h1>
         <section class="Disciplinas" id="Disciplinas">
-            <div id="1" class="card text-center" style="width: 15em;">
-                <div class="nav-item dropend text-end" style="font-weight: bold;">
-                    <a class="nav-link dropdown active text-dark" href="#" id="navbarDropdown" role="button"
-                        data-bs-toggle="dropdown" aria-expanded="false">. . . 
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#">Editar Disciplina</a></li>
-                        <li><a class="dropdown-item" href="#">Apagar Disciplina</a></li>
-                    </ul>
-                </div>
-                <a href=""><img src="/front-end/Image/ufs_colorido_horizontal_positiva-830x370.png"
-                        class="card-img-top imagemDisciplina" alt="Logo Ufs"></a>
-                <div class="card-body ">
-                    <a style="text-decoration: none; color: black;" href="">
-                        <h5 class="card-title">Nome Disciplina</h5></a>
-                    <p class="card-text">Professor(a): Fulano</p>
-                    <p class="card-text">Horário:</p>
-                    <a href="Disciplina.html" class="btn btn-primary">Entrar</a>
-                </div>
-            </div>
         </section>
         <footer id="rodape">
             &copy; Copyright 2022 - by Erick Santos, Igor Primo e Valmir Cunha
@@ -86,6 +66,8 @@
             }
 
         </script>
+		<script src="scripts/get_disciplinas.js"></script>
+		<script src="scripts/sair.js"></script>
 </body>
 
 </html>

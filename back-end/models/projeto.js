@@ -6,7 +6,7 @@ async function get_projetos_cadastrados(id){
 	try {
 
 		const queryres = await db.query(
-			`SELECT id, nome FROM
+			`SELECT id, nome, data_apres FROM
 				projeto
 			WHERE
 				fk_disc = $1`,
@@ -28,7 +28,8 @@ async function post_projetos_cadastrados(
 	nome,
 	is_indiv,
 	is_pond,
-	peso,
+	peso_prof,
+	peso_alun,
 	data_apres
 ){
 
@@ -44,14 +45,16 @@ async function post_projetos_cadastrados(
 				$3,
 				$4,
 				$5,
-				$6
+				$6,
+				$7
 			) RETURNING id, nome;`,
 				[
 					nome,
 					id_disc,
 					is_indiv,
 					is_pond,
-					peso,
+					peso_prof,
+					peso_alun,
 					data_apres
 				]
 		);

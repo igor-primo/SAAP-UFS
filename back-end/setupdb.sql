@@ -39,7 +39,8 @@ CREATE TABLE IF NOT EXISTS projeto (
 	fk_disc INT,
 	is_indiv BOOLEAN NOT NULL DEFAULT FALSE,
 	is_pond BOOLEAN NOT NULL DEFAULT FALSE,
-	peso DOUBLE PRECISION,
+	peso_prof DOUBLE PRECISION,
+	peso_alun DOUBLE PRECISION,
 	data_apres DATE NOT NULL,
 	CONSTRAINT refer_proj_disc FOREIGN KEY(fk_disc)
 		REFERENCES disciplina(id)

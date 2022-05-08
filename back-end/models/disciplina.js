@@ -7,12 +7,14 @@ async function get_disciplinas_cadastradas(id){
 
 		const disciplinas =
 			await db.query(
-				`SELECT disc.id, disc.nome_disc, disc.prof_resp FROM
+				`SELECT disc.id, disc.nome_disc, disc.prof_resp, us2.username FROM
 					disciplina AS disc
 				INNER JOIN disc_cad AS di
 				ON di.disc_id = disc.id
 				INNER JOIN usuario AS us
 				ON di.disc_cad = us.id
+				INNER JOIN usuario AS us2
+				ON disc.prof_resp = us2.id
 				WHERE $1 = us.id;`,
 				[ id ]
 			);

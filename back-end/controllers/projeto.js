@@ -18,7 +18,8 @@ const post_projetos_cadastrados = asyncWrapper(async (req, res) => {
 	const nome = req.body.nome;
 	const is_indiv = req.body.is_indiv || false;
 	const is_pond = req.body.is_pond || false;
-	const peso = req.body.peso || null;
+	const peso_prof = req.body.peso_prof || null;
+	const peso_alun = req.body.peso_alun || null;
 	const data_apres = req.body.data_apres || new Date(); //date object
 
 	//TODO: prep data_apres for db
@@ -29,7 +30,8 @@ const post_projetos_cadastrados = asyncWrapper(async (req, res) => {
 			nome,
 			is_indiv,
 			is_pond,
-			peso,
+			peso_prof,
+			peso_alun,
 			data_apres
 		);
 

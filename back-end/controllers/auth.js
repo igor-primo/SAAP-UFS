@@ -22,8 +22,7 @@ const signup = asyncWrapper(async (req, res) => {
 		return res.status(200)
 			.json({msg: 'Usuário já cadastrado'});
 	else
-		return res.status(200)
-		.json(returned.response);
+		return res.status(200).json({});
 
 });
 
@@ -31,6 +30,8 @@ const login = asyncWrapper(async (req, res) => {
 
 	const email = req.body.email;
 	const password = req.body.password;
+
+	console.log(email, password);
 
 	const returned = await models.login(
 		email, password

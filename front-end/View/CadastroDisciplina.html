@@ -47,11 +47,11 @@
   <div class="container">
     <div class="p-3 mb-2 bg-light text-dark text-center">
       <h3>Cadastro Disciplina</h3>
-      <form action="" method="post">
+      <form id="cadastroDisciplinaForm" action="" method="post">
         <br>
         <div class="input-group mb-3">
           <span class="input-group-text" id="basic-addon1">Nome</span>
-          <input type="text" class="form-control" placeholder="Nome da disciplina" aria-label="Username"
+          <input id="name_input" type="text" class="form-control" placeholder="Nome da disciplina" aria-label="Username"
             aria-describedby="basic-addon1">
         </div>
         <div class="input-group mb-3">
@@ -92,6 +92,7 @@
       document.getElementById('tabelaAlunos').deleteRow(i)
     }
   </script>
+  <script src="scripts/post_disciplina.js"></script>
 </body>
 
 

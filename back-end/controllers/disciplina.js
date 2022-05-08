@@ -23,7 +23,7 @@ const post_disciplinas_cadastradas = asyncWrapper(async (req, res) => {
 		id, nome_disc, prof_resp
 	);
 
-	return res.status(201).send();
+	return res.status(201).json({});
 
 });
 

@@ -51,7 +51,6 @@ async function signup (
 
 		return {
 			jaCadastrado: false,
-			response: queryres.rows[0]
 		};
 
 	} catch(e) {
@@ -73,7 +72,7 @@ async function login (email, password){
 			);
 
 		const queryres = await db.query(
-			`SELECT id, password
+			`SELECT id, username, email, matricula, is_aluno, password
 				FROM usuario
 				WHERE LOWER(email) = LOWER($1);`,
 			[ email ]
@@ -97,8 +96,13 @@ async function login (email, password){
 				);
 
 			const token = JWTissuer(queryres.rows[0].id);
+			const id = queryres.rows[0].id;
+			const username = queryres.rows[0].username;
+			const email = queryres.rows[0].email;
+			const matricula = queryres.rows[0].matricula;
+			const is_aluno = queryres.rows[0].is_aluno;
 
-			return { token };
+			return { id, username, email, matricula, is_aluno, token };
 
 		}
 
