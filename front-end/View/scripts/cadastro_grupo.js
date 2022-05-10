@@ -5,7 +5,8 @@ cadastro_grupo_form.addEventListener('submit', post_grupo);
 
 async function post_grupo(e){
 	e.preventDefault();
-	const nome = document.getElementById('tema_grupo').value;
+	const nome = document.getElementById('nome_grupo').value;
+	const tema = document.getElementById('tema_grupo').value;
 	const id_proj = proj.id;
 	const token = user_creds.token;
 	const opt = {
@@ -14,7 +15,7 @@ async function post_grupo(e){
 			"Authorization": "Bearer "+token,
 			"Content-Type": "application/json"
 		},
-		body: JSON.stringify({nome})
+		body: JSON.stringify({nome, tema})
 	};
 	await fetch(
 		`http://127.0.0.1:5000/api/v1/grupo/${id_proj}/projeto`,

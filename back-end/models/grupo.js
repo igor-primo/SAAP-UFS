@@ -7,7 +7,7 @@ async function get_grupos_cadastrados(id){
 
 		const queryres =
 			await db.query(
-				`SELECT id, nome FROM
+				`SELECT id, nome, tema FROM
 					grupo
 				WHERE 
 					fk_proj = $1;`,
@@ -26,6 +26,7 @@ async function get_grupos_cadastrados(id){
 
 async function post_grupos_cadastrados(
 	nome,
+	tema,
 	id_proj
 ){
 
@@ -38,9 +39,10 @@ async function post_grupos_cadastrados(
 				VALUES(
 					DEFAULT,
 					$1,
-					$2
+					$2,
+					$3
 				) RETURNING id, nome;`,
-				[ nome, id_proj ]
+				[ nome, tema, id_proj ]
 			);
 
 		return queryres.rows[0];

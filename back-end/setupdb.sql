@@ -97,6 +97,7 @@ CREATE TABLE IF NOT EXISTS avaliador(
 CREATE TABLE IF NOT EXISTS grupo(
 	id SERIAL PRIMARY KEY,
 	nome VARCHAR(20) NOT NULL,
+	tema VARCHAR(255) NOT NULL,
 	fk_proj INT,
 	CONSTRAINT refer_grupo_proj FOREIGN KEY(fk_proj)
 		REFERENCES projeto(id)
@@ -109,6 +110,33 @@ CREATE TABLE IF NOT EXISTS resultado(
 	fk_grupo INT,
 	result DOUBLE PRECISION,
 	CONSTRAINT refer_result_grupo FOREIGN KEY(fk_grupo)
+		REFERENCES grupo(id)
+		ON DELETE CASCADE
+		ON UPDATE CASCADE
+);
+
+CREATE TABLE IF NOT EXISTS us_gru (
+	fk_us INT NOT NULL,
+	fk_gru INT NOT NULL,
+	CONSTRAINT refer_usgru_usuario FOREIGN KEY(fk_us)
+		REFERENCES usuario(id)
+		ON DELETE CASCADE
+		ON UPDATE CASCADE,
+	CONSTRAINT refer_usgru_grupo FOREIGN KEY(fk_gru)
+		REFERENCES grupo(id)
+		ON DELETE CASCADE
+		ON UPDATE CASCADE
+);
+
+CREATE TABLE IF NOT EXISTS avaliacao(
+	fk_avaliador INT NOT NULL,
+	fk_grupo INT NOT NULL,
+	nota DOUBLE PRECISION NOT NULL,
+	CONSTRAINT refer_avaliacao_us FOREIGN KEY(fk_avaliador)
+		REFERENCES usuario(id)
+		ON DELETE CASCADE
+		ON UPDATE CASCADE,
+	CONSTRAINT refer_avaliacao_gru FOREIGN KEY(fk_grupo)
 		REFERENCES grupo(id)
 		ON DELETE CASCADE
 		ON UPDATE CASCADE

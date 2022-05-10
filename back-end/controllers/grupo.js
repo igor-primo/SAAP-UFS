@@ -15,11 +15,13 @@ const get_grupos_cadastrados = asyncWrapper(async (req, res) => {
 const post_grupos_cadastrados = asyncWrapper(async (req, res) => {
 
 	const nome = req.body.nome;
+	const tema = req.body.tema;
 	const id_proj = req.params.id_proj;
 
 	const projeto = 
 		await models.post_grupos_cadastrados(
 			nome,
+			tema,
 			id_proj
 		);
 

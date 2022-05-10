@@ -42,7 +42,7 @@
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <li><a class="dropdown-item" href="#">Editar Grupo</a></li>
-                                <li><a class="dropdown-item" href="#adicionarIntegrantesModal" data-bs-toggle="modal">Adicionar integrantes</a>
+                                <li><a id="adicionar_integrantes" class="dropdown-item" href="#adicionarIntegrantesModal" data-bs-toggle="modal">Adicionar integrantes</a>
                                 </li>
                                 <li><a class="dropdown-item" href="#integrantesModal" data-bs-toggle="modal">Integrantes</a></li>
                                 <li>
@@ -63,10 +63,10 @@
         </nav>
     </header>
     <div id="corpo">
-        <h1 class="text-center">Grupo X</h1>
+        <h1 id="grupo_nome" class="text-center"></h1>
         <p>*No calculo final, avaliações não realizadas são desconsideradas</p>
         <h5>Tema do grupo: </h5>
-        <p>Pesquisa sobre fulano de tal</p>
+        <p id="grupo_tema">Pesquisa sobre fulano de tal</p>
         <h5>Integrantes:</h5>
         <p>Fulano,Fulano2</p>
         <h5>Resultado:</h5>
@@ -129,7 +129,7 @@
                                 <th scope="col">Nome</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody id="corpo_tabela_integrantes">
                             <tr>
                                 <th scope="row"><input type="checkbox" class="custom-control-input" id="customCheck1">
                                 </th>
@@ -217,6 +217,7 @@
             document.getElementById('tabela').deleteRow(i)
         }
     </script>
+	<script src="scripts/grupo.js"></script>
 </body>
 
 </html>

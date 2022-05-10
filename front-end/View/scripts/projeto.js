@@ -28,14 +28,25 @@ async function get_grupos(){
 			grupo.setAttribute('id', grupos[i].id);
 			grupo.setAttribute('class', 'card w-50 text-center cardGrupo');
 			grupo.innerHTML = `
-                <div class="card-body">
+                <div id="${grupos[i].id}" class="card-body">
                   <h5 class="card-title">Grupo ${grupos[i].nome}</h5>
-                  <p class="card-text">Tema: ${grupos[i].nome}</p>
+                  <p class="card-text">Tema: ${grupos[i].tema}</p>
                   <a href="Avaliacao.html" class="btn btn-primary">Avaliar</a>
-                  <a href="Grupo.html" class="btn btn-primary m-1">Vizualizar</a>
+                  <a id="visualizar_button" href="Grupo.html" class="btn btn-primary m-1">Vizualizar</a>
                 </div>
 			`;
 			grupos_sec.appendChild(grupo);
+
+			const visualizar_button = document.getElementById('visualizar_button');
+			visualizar_button.addEventListener('click', handle_visualizar);
+			function handle_visualizar(e){
+				//e.preventDefault();
+				const disc_id = e.srcElement.parentNode.id;
+				console.log(disc_id);
+				for(let i=0;i<grupos.length;i++)
+					if(disc_id == grupos[i].id)
+						sessionStorage.setItem('grupo', JSON.stringify(grupos[i]));
+			}
 		}
 	});
 }
