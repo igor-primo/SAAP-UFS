@@ -79,8 +79,9 @@ async function post_formularios_cadastrados(
 }
 
 async function get_formularios_cadastrados(id_proj){
+	console.log(id_proj);
 	try {
-		const query_id_form = db.query(
+		const query_id_form = await db.query(
 			`SELECT f.id FROM
 				formulario AS f
 			INNER JOIN
@@ -89,8 +90,9 @@ async function get_formularios_cadastrados(id_proj){
 			WHERE p.id = $1;`,
 			[ id_proj ]
 		);
+		console.log(query_id_form);
 		const id_form = query_id_form.rows[0].id;
-		const query_secao_quest = db.query(
+		const query_secao_quest = await db.query(
 			`SELECT sq.id, sq.nome_sec FROM
 				secao_quest AS sq
 			INNER JOIN formulario AS f
@@ -98,11 +100,12 @@ async function get_formularios_cadastrados(id_proj){
 			WHERE f.id = $1;`,
 			[ id_form ]
 		);
-		let form;
+		console.log(query_secao_quest.rows);
+		let form = [];
 		let form_i = 0;
 		const secoes = query_secao_quest.rows;
 		for(let i=0;i<secoes.length;i++){
-			const query_quesito = db.query(
+			const query_quesito = await db.query(
 				`SELECT q.pergunta FROM
 					quesito AS q
 				INNER JOIN secao_quest AS sq
@@ -110,9 +113,11 @@ async function get_formularios_cadastrados(id_proj){
 				WHERE sq.id = $1;`,
 				[ secoes[i].id ]
 			);
+			console.log(query_quesito.rows);
 			form[form_i++] = secoes[i].nome_sec;
-			form[form_i] = query_quesito.rows;
+			form[form_i++] = query_quesito.rows;
 		}
+		console.log(form);
 		return form;
 	} catch(e){
 		throw e;

@@ -31,7 +31,7 @@ async function get_grupos(){
                 <div id="${grupos[i].id}" class="card-body">
                   <h5 class="card-title">Grupo ${grupos[i].nome}</h5>
                   <p class="card-text">Tema: ${grupos[i].tema}</p>
-                  <a href="Avaliacao.html" class="btn btn-primary">Avaliar</a>
+                  <a id="avaliar_button"href="Avaliacao.html" class="btn btn-primary">Avaliar</a>
                   <a id="visualizar_button" href="Grupo.html" class="btn btn-primary m-1">Vizualizar</a>
                 </div>
 			`;

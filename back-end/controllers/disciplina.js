@@ -39,7 +39,7 @@ const cadastrar_usuario = asyncWrapper(async (req, res) => {
 		disc_cad, disc_id
 	);
 
-	return res.status(201).send();
+	return res.status(201).json({});
 
 });
 

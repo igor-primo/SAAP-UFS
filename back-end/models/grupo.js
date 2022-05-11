@@ -56,9 +56,47 @@ async function post_grupos_cadastrados(
 
 }
 
+async function get_integrantes(id_gru){
+	try {
+		const { rows } = 
+			await db.query(
+				`SELECT us.username FROM
+					usuario AS us
+				INNER JOIN us_gru AS ug
+				ON us.id = ug.fk_us
+				WHERE ug.fk_gru = $1`,
+				[ id_gru ]
+			);
+		console.log(rows);
+		return rows;
+	} catch(e){
+		throw e;
+	}
+}
+
+async function post_integrantes(id_gru, id_us_arr){
+	try {
+		for(let i=0;i<id_us_arr.length;i++)
+			await db.query(
+				`INSERT INTO
+					us_gru
+				VALUES(
+					$1,
+					$2
+				);`,
+				[id_us_arr[i], id_gru]
+			);
+	} catch(e) {
+		throw e;
+	}
+}
+
 module.exports = {
 
 	get_grupos_cadastrados,
-	post_grupos_cadastrados
+	post_grupos_cadastrados,
+	get_integrantes,
+	post_integrantes
+
 
 };

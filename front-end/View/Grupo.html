@@ -41,13 +41,13 @@
                                 data-bs-toggle="dropdown" aria-expanded="false">Opções
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#">Editar Grupo</a></li>
+								<!-- <li><a class="dropdown-item" href="#">Editar Grupo</a></li> -->
                                 <li><a id="adicionar_integrantes" class="dropdown-item" href="#adicionarIntegrantesModal" data-bs-toggle="modal">Adicionar integrantes</a>
                                 </li>
-                                <li><a class="dropdown-item" href="#integrantesModal" data-bs-toggle="modal">Integrantes</a></li>
-                                <li>
+								<!-- <li><a class="dropdown-item" href="#integrantesModal" data-bs-toggle="modal">Integrantes</a></li> -->
+                                <!-- <li>
                                     <hr class="dropdown-divider">
-                                </li>
+								</li> -->
                             </ul>
                         </li>
                         <li class="nav-item">
@@ -70,7 +70,7 @@
         <h5>Tema do grupo: </h5>
         <p id="grupo_tema">Pesquisa sobre fulano de tal</p>
         <h5>Integrantes:</h5>
-        <p>Fulano,Fulano2</p>
+        <p id="integrantes_lista"></p>
         <h5>Resultado:</h5>
         <p>O resultado calculado com base na media (Aritmética ou onderada, pergunte ao professor(a)) das avaliações: 8
         </p>
@@ -132,29 +132,12 @@
                             </tr>
                         </thead>
                         <tbody id="corpo_tabela_integrantes">
-                            <tr>
-                                <th scope="row"><input type="checkbox" class="custom-control-input" id="customCheck1">
-                                </th>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                            </tr>
-                            <tr>
-                                <th scope="row"><input type="checkbox" class="custom-control-input" id="customCheck2">
-                                </th>
-                                <td>Jacob</td>
-                                <td>Thornton</td>
-                            </tr>
-                            <tr>
-                                <th scope="row"><input type="checkbox" class="custom-control-input" id="customCheck3">
-                                </th>
-                                <td colspan="2">Larry the Bird</td>
-                            </tr>
                         </tbody>
                     </table>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn btn-primary">Enviar</button>
+                    <button id="adicionar_integrantes_button" type="button" class="btn btn-primary">Enviar</button>
                 </div>
             </div>
         </div>

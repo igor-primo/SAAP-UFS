@@ -14,6 +14,6 @@ const router = express.Router();
 router.use(initialize());
 const auth = _ => authenticate('jwt', {session:false});
 
-router.route('/users')
+router.route('/avaliadores')
 	.all(auth())
 	.get(avaliadorController.get_users);

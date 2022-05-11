@@ -28,7 +28,7 @@ const post_formularios_cadastrados = asyncWrapper(async (req, res) => {
 		secoes,
 	);
 
-	return res.status(201).send();
+	return res.status(201).json({});
 
 });
 

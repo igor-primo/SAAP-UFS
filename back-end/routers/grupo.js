@@ -11,4 +11,12 @@ router.route('/:id_proj/projeto')
 	.get(grupoController.get_grupos_cadastrados)
 	.post(grupoController.post_grupos_cadastrados);
 
+router.route('/:id_gru/integrantes')
+	.all(auth())
+	.get(grupoController.get_integrantes);
+
+router.route('/post_integrantes')
+	.all(auth())
+	.post(grupoController.post_integrantes);
+
 module.exports = router;
