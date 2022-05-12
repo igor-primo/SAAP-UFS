@@ -2,7 +2,7 @@ const db = require('../db');
 const bcrypt = require('bcryptjs');
 const {customError} = require('../errors/custom');
 
-async function get_avaliadaores(id_gru){
+async function get_avaliadores(id_proj){
 
 	try {
 
@@ -10,14 +10,11 @@ async function get_avaliadaores(id_gru){
 			await db.query(
 				`SELECT us.id, us.username FROM
 					usuario AS us
-				INNER JOIN avaliador AS av
-				ON us.id = av.fk_id_us
-				INNER JOIN projeto AS pr
-				ON pr.id = av.fk_id_proj
-				INNER JOIN grupo AS gr
-				ON gr.fk_proj = pr.id
-				WHERE gr.fk_proj != $1`,
-				[ id_gru ]
+				INNER JOIN
+					avaliador AS av
+				ON av.fk_id_us = us.id
+				WHERE av.fk_id_proj = $1;`,
+				[ id_proj ]
 			);
 
 		console.log(rows);
@@ -32,8 +29,26 @@ async function get_avaliadaores(id_gru){
 
 }
 
+async function post_avaliadores(id_us_arr, id_proj){
+	try {
+		for(let i=0;i<id_us_arr.length;i++)
+			await db.query(
+				`INSERT INTO
+					avaliador
+				VALUES(
+					$1,
+					$2
+				);`,
+				[ id_us_arr[i], id_proj ]
+			);
+	} catch(e){
+		throw e;
+	}
+}
+
 module.exports = {
 
-	get_avaliadores
+	get_avaliadores,
+	post_avaliadores
 
 };

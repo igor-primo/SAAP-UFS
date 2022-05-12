@@ -38,7 +38,7 @@ async function get_disciplinas(){
                     <a style="text-decoration: none; color: black;" href="">
                         <h5 class="card-title">${disciplinas[i].nome_disc}</h5></a>
                     <p class="card-text">Professor(a): ${disciplinas[i].username}</p>
-                    <p class="card-text">Horário:</p>
+                    <!-- <p class="card-text">Horário:</p> -->
                     <a name="entrar_button" href="Disciplina.html" class="btn btn-primary">Entrar</a>
                 </div>
 				`;

@@ -14,6 +14,20 @@ async function post_formularios_cadastrados(
 
 		await client.query('BEGIN');
 
+		const { rows } =
+			await db.query(
+				`SELECT id FROM
+					formulario
+				WHERE fk_proj = $1`,
+				[ id ]
+			);
+
+		if(rows.length >= 1)
+			throw new customError(
+				'Já há um formulário cadastrado para esse projeto e apenas um formulário por projeto pode existir.',
+				301
+			);
+
 		const queryres = await client.query(
 			`INSERT INTO
 				formulario

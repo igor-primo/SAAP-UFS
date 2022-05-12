@@ -14,6 +14,12 @@ const router = express.Router();
 router.use(initialize());
 const auth = _ => authenticate('jwt', {session:false});
 
-router.route('/avaliadores')
+router.route('/:id_proj/avaliadores')
 	.all(auth())
-	.get(avaliadorController.get_users);
+	.get(avaliadorController.get_avaliadores);
+
+router.route('/post_avaliadores')
+	.all(auth())
+	.post(avaliadorController.post_avaliadores);
+
+module.exports = router;

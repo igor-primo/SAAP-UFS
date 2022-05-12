@@ -117,7 +117,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn btn-primary">Enviar</button>
+                    <button id="enviar_alunos_button" type="button" class="btn btn-primary">Enviar</button>
                 </div>
             </div>
         </div>
@@ -128,7 +128,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Adicionar Alunos</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Adicionar Professores</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -165,7 +165,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn btn-primary">Enviar</button>
+                    <button id="enviar_professores_button" type="button" class="btn btn-primary">Enviar</button>
                 </div>
             </div>
         </div>
@@ -190,7 +190,8 @@
                                 <th scope="col">Remover</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody id="tabela_integrantes_professores">
+							<!--
                             <tr>
                                 <th scope="row">1</th>
                                 <td>Mark</td>
@@ -211,6 +212,7 @@
                                 <td style="cursor: pointer;"><span class="material-icons-outlined btnRemover"
                                         onclick="apagarProfessor(this.parentNode.parentNode.rowIndex)">close</span></td>
                             </tr>
+							-->
                         </tbody>
                     </table>
                     <h4>Alunos:</h4>
@@ -223,7 +225,8 @@
                                 <th scope="col">Remover</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody id="tabela_integrantes_alunos">
+							<!--
                             <tr>
                                 <th scope="row">1</th>
                                 <td>Mark</td>
@@ -244,6 +247,7 @@
                                 <td style="cursor: pointer;"><span class="material-icons-outlined btnRemover"
                                         onclick="apagarAluno(this.parentNode.parentNode.rowIndex)">close</span></td>
                             </tr>
+							-->
                         </tbody>
                     </table>
                 </div>

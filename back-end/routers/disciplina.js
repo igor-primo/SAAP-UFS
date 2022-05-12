@@ -16,4 +16,8 @@ router.route('/cadastrar_usuario')
 	.all(auth())
 	.post(disciplinaController.cadastrar_usuario);
 
+router.route('/:disc_id/get_integrantes')
+	.all(auth())
+	.get(disciplinaController.get_integrantes);
+
 module.exports = router;

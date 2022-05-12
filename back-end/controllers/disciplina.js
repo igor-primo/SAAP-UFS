@@ -29,18 +29,28 @@ const post_disciplinas_cadastradas = asyncWrapper(async (req, res) => {
 
 const cadastrar_usuario = asyncWrapper(async (req, res) => {
 
-	const disc_cad = req.body.id_us;
+	const id_us_arr = req.body.id_us_arr;
 	const disc_id = req.body.disc_id;
 
 	//TODO: how to make sure that
 	//i am responsible for this discipline?
 
 	await models.cadastrar_usuario(
-		disc_cad, disc_id
+		id_us_arr, disc_id
 	);
 
 	return res.status(201).json({});
 
+});
+
+const get_integrantes = asyncWrapper(async (req, res) => {
+	const disc_id = req.params.disc_id;
+
+	const integrantes = 
+		await models.get_integrantes(disc_id);
+
+	return res.status(200)
+		.json(integrantes);
 });
 
 module.exports = {
@@ -48,5 +58,6 @@ module.exports = {
 	get_disciplinas_cadastradas,
 	post_disciplinas_cadastradas,
 	cadastrar_usuario,
+	get_integrantes
 
 };

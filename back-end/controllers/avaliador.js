@@ -3,9 +3,9 @@ const models = require('../models/avaliador');
 
 const get_avaliadores = asyncWrapper(async (req, res) => {
 
-	const id_gru = req.params.id_gru;
+	const id_proj = req.params.id_proj;
 
-	const avaliadores = await models.get_avaliadores(id_us);
+	const avaliadores = await models.get_avaliadores(id_proj);
 
 	return res.status(200)
 		.json(avaliadores);
@@ -14,12 +14,12 @@ const get_avaliadores = asyncWrapper(async (req, res) => {
 
 const post_avaliadores = asyncWrapper(async (req, res) => {
 
-	const id_us = req.body.id_us;
-	const id_disc = req.body.id_disc;
+	const id_us_arr = req.body.id_us_arr;
+	const id_proj = req.body.id_proj;
 
-	await models.post_users(id_us, id_disc);
+	await models.post_avaliadores(id_us_arr, id_proj);
 
-	return res.status(201).send();
+	return res.status(201).json({});
 
 });
 

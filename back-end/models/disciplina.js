@@ -88,24 +88,25 @@ async function post_disciplinas_cadastradas(id, nome_disc, prof_resp){
 }
 
 async function cadastrar_usuario(
-	disc_cad,
+	id_us_arr,
 	disc_id
 ){
 
 	try {
 
-		await db.query(
-			`INSERT INTO 
-				disc_cad
-			VALUES(
-				$1,
-				$2
-			);`,
-			[
-				disc_cad,
-				disc_id
-			]
-		);
+		for(let i=0;i<id_us_arr.length;i++)
+			await db.query(
+				`INSERT INTO 
+					disc_cad
+				VALUES(
+					$1,
+					$2
+				);`,
+				[
+					id_us_arr[i],
+					disc_id
+				]
+			);
 
 		return;
 
@@ -117,10 +118,31 @@ async function cadastrar_usuario(
 
 }
 
+async function get_integrantes(disc_id){
+	try {
+		const { rows } = 
+			await db.query(
+				`SELECT us.id, us.username, us.is_aluno FROM
+							usuario AS us
+				INNER JOIN 
+					disc_cad AS dc
+				ON dc.disc_cad = us.id
+				WHERE dc.disc_id = $1`,
+				[ disc_id ]
+			);
+		console.log(rows);
+
+		return rows;
+	} catch(e){
+		throw e;
+	}
+}
+
 module.exports = {
 
 	get_disciplinas_cadastradas,
 	post_disciplinas_cadastradas,
 	cadastrar_usuario,
+	get_integrantes
 
 };

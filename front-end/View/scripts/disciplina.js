@@ -101,6 +101,44 @@ async function get_alunos(){
 			tr.appendChild(td2);
 			corpo_tabela_integrantes.appendChild(tr);
 		}
+
+		const enviar_alunos_button = 
+			document.getElementById('enviar_alunos_button');
+		enviar_alunos_button.addEventListener('click', post_alunos);
+		
+		async function post_alunos(e){
+			e.preventDefault();
+			const checkboxes =
+				document.getElementsByName('post_alunos_checkbox');
+			let id_us_arr = [];
+			console.log(checkboxes); //nodelist
+			for(let i=0;i<checkboxes.length;i++)
+				if(checkboxes[i].checked)
+					id_us_arr.push(checkboxes[i].id);
+			const disc_id = disciplina.id;
+			const opt = {
+				method: 'POST',
+				body: JSON.stringify({id_us_arr, disc_id}),
+				headers: {
+					"Authorization": "Bearer "+token,
+					"Content-Type": "application/json"
+				}
+			};
+			console.log(id_us_arr, disc_id, opt);
+			await fetch(
+				`http://127.0.0.1:5000/api/v1/disciplina/cadastrar_usuario`,
+				opt
+			).then(async data => {
+				const data_json = await data.json();
+				console.log(data_json);
+				if(data_json.msg)
+					alert(data_json.msg)
+				else
+					alert('Alunos cadastrados em disciplina com sucesso.');
+			});
+		}
+		
+
 	});
 }
 
@@ -131,7 +169,7 @@ async function get_professores(){
 			checkbox.setAttribute('type', 'checkbox');
 			checkbox.setAttribute('class', 'custom-control-input');
 			checkbox.setAttribute('id', professores[i].id);
-			checkbox.setAttribute('name', 'post_alunos_checkbox');
+			checkbox.setAttribute('name', 'post_professores_checkbox');
 			const th = document.createElement('th');
 			th.setAttribute('scope', 'row');
 			th.appendChild(checkbox);
@@ -145,10 +183,89 @@ async function get_professores(){
 			tr.appendChild(td2);
 			corpo_tabela_integrantes.appendChild(tr);
 		}
+
+		const enviar_professores_button = 
+			document.getElementById('enviar_professores_button');
+		enviar_professores_button.addEventListener('click', post_professores);
+		
+		async function post_professores(e){
+			e.preventDefault();
+			const checkboxes =
+				document.getElementsByName('post_professores_checkbox');
+			console.log(checkboxes);
+			let id_us_arr = [];
+			for(let i=0;i<checkboxes.length;i++)
+				if(checkboxes[i].checked)
+					id_us_arr.push(checkboxes[i].id);
+			const disc_id = disciplina.id;
+			const opt = {
+				method: 'POST',
+				body: JSON.stringify({id_us_arr, disc_id}),
+				headers: {
+					"Authorization": "Bearer "+token,
+					"Content-Type": "application/json"
+				}
+			};
+			await fetch(
+				`http://127.0.0.1:5000/api/v1/disciplina/cadastrar_usuario`,
+				opt
+			).then(async data => {
+				const data_json = await data.json();
+				console.log(data_json);
+				if(data_json.msg)
+					alert(data_json.msg)
+				else
+					alert('Professores cadastrados em disciplina com sucesso.');
+			});
+		}
+
+
+	});
+}
+
+async function get_integrantes(){
+	const token = user_creds.token;
+	const disc_id = disciplina.id;
+	const opt = {
+		method: 'GET',
+		headers: {
+			"Authorization": "Bearer "+token,
+			"Content-Type": "application/json"
+		}
+	};
+	await fetch(
+		`http://127.0.0.1:5000/api/v1/disciplina/${disc_id}/get_integrantes`,
+		opt
+	).then(async data => {
+		integrantes = await data.json();
+		if(integrantes.msg)
+			alert(Integrantes.msg);
+		console.log(integrantes);
+		const tabela_integrantes_alunos =
+			document.getElementById('tabela_integrantes_alunos');
+		const tabela_integrantes_professores =
+			document.getElementById('tabela_integrantes_professores');
+		for(let i=0;i<integrantes.length;i++){
+			const tr = 
+				document.createElement('tr');
+			tr.innerHTML = 
+				`
+				<th scope="row">1</th>
+				<td>${integrantes[i].username}</td>
+				<td>${integrantes[i].username}</td>
+				<td style="cursor: pointer;"><span class="material-icons-outlined btnRemover"
+						onclick="apagarProfessor(this.parentNode.parentNode.rowIndex)">close</span></td>
+				`;
+			if(integrantes[i].is_aluno)
+				tabela_integrantes_alunos.appendChild(tr);
+			else
+				tabela_integrantes_professores.appendChild(tr);
+		}
+		sessionStorage.setItem('list_integrantes', JSON.stringify(integrantes));
 	});
 }
 
 get_projetos();
 get_alunos();
 get_professores();
-//get_integrantes();
+get_integrantes();
