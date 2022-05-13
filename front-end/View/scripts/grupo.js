@@ -117,8 +117,60 @@ async function get_integrantes(){
 	});
 }
 
+async function post_resultado(e){
+	e.preventDefault();
+	const token = user_creds.token;
+	const id_gru = grupo.id;
+	const opt = {
+		method: 'POST',
+		body: JSON.stringify({id_gru}),
+		headers: {
+			"Authorization": "Bearer "+token,
+			"Content-Type": "application/json"
+		}
+	};
+	await fetch(
+		'http://127.0.0.1:5000/api/v1/resultado',
+		opt
+	).then(async data => {
+		const data_json = await data.json();
+		if(data_json.msg)
+			alert(data_json.msg);
+		else
+			alert('Resultado calculado com sucesso.');
+	});
+}
+
+async function get_resultado(){
+	const token = user_creds.token;
+	const id_gru = grupo.id;
+	const opt = {
+		method: 'GET',
+		headers: {
+			"Authorization": "Bearer "+token
+		}
+	};
+	await fetch(
+		`http://127.0.0.1:5000/api/v1/resultado/${id_gru}/get_resultado`,
+		opt
+	).then(async data => {
+		const resultado = data.json();
+		if(resultado.msg)
+			alert(resultado.msg);
+		else{
+			const resultado_p =
+				document.getElementById('resultado_p');
+			resultado_p.innerHTML = `O resultado calculado com base na media (Aritmética ou ponderada, pergunte ao professor(a)) das avaliações: ${resultado.resultado}`;
+;
+		}
+	});
+}
+
 get_alunos();
 get_integrantes();
+get_resultado();
 const adicionar_integrantes_button = 
 	document.getElementById('adicionar_integrantes_button');
 adicionar_integrantes_button.addEventListener('click', post_integrantes);
+const calcular_resultado_button =
+	document.getElementById('calcular_resultado_button', post_resultado);

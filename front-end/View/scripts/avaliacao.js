@@ -35,7 +35,7 @@ async function get_formulario(){
                             <label for="nota" class="col-form-label">Nota:</label>
                         </div>
                         <div class="col-auto">
-                            <input type="number" id="nota" class="form-control" max="10" min="0">
+                            <input name="notas" type="number" id="nota" class="form-control" max="10" min="0">
                         </div>
                         <div class="col-auto">
                             <span id="valueHelpInline" class="form-text">
@@ -52,6 +52,42 @@ async function get_formulario(){
 				document.getElementById('enviar_div_button');
 			corpo.insertBefore(topico, enviar_div_button);
 			//corpo.appendChild(topico);
+			const enviar_formulario_button =
+				document.getElementById('enviar_formulario_button');
+			enviar_formulario_button.addEventListener('click', post_avaliacao);
+
+			async function post_avaliacao(e){
+				e.preventDefault();
+				const token = user_cres.token;
+				const id_av = user_creds.id;
+				const id_gru = grupo.id;
+				const notas =
+					document.getElementsByName('notas');
+				console.log(notas);
+				let nota = 0;
+				for(let i=0;i<notas.length;i++)
+					nota += notas[i].value;
+				nota += nota / notas.length;
+				const opt = {
+					method: 'POST',
+					body: JSON.stringify({id_av, id_gru, nota}),
+					headers: {
+						"Authorization": "Bearer "+token,
+						"Content-Type": "application/json"
+					}
+				};
+				console.log(opt);
+				await fetch(
+					'http://127.0.0.1:5000/api/v1/avaliacao/post_avaliacao',
+					opt
+				).then(async data => {
+					const data_json = await data.json();
+					if(data_json.msg)
+						alert(data_json.msg);
+					else
+						alert('Avaliação cadastrada com sucesso.');
+				});
+			}
 		}
 	});
 }

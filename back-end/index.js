@@ -10,6 +10,8 @@ const grupo = require('./routers/grupo');
 const formulario = require('./routers/formulario');
 const usuario = require('./routers/usuario');
 const avaliador = require('./routers/avaliador');
+const avaliacao = require('./routers/avaliacao');
+const resultado = require('./routers/resultado');
 const error = require('./middlewares/error');
 
 const app = express();
@@ -31,6 +33,8 @@ app.use('/api/v1/grupo', grupo);
 app.use('/api/v1/formulario', formulario);
 app.use('/api/v1/usuario', usuario);
 app.use('/api/v1/avaliador', avaliador);
+app.use('/api/v1/avaliacao', avaliacao);
+app.use('/api/v1/resultado', resultado);
 app.use(error);
 
 app.use('/', (req, res) => res.redirect('/front-end/View/Login.html'));
