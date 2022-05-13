@@ -31,7 +31,7 @@ async function get_grupos(){
                 <div id="${grupos[i].id}" class="card-body">
                   <h5 class="card-title">Grupo ${grupos[i].nome}</h5>
                   <p class="card-text">Tema: ${grupos[i].tema}</p>
-                  <a id="avaliar_button"href="Avaliacao.html" class="btn btn-primary">Avaliar</a>
+                  <a id="avaliar_button" href="Avaliacao.html" class="btn btn-primary">Avaliar</a>
                   <a id="visualizar_button" href="Grupo.html" class="btn btn-primary m-1">Vizualizar</a>
                 </div>
 			`;
@@ -39,6 +39,10 @@ async function get_grupos(){
 
 			const visualizar_button = document.getElementById('visualizar_button');
 			visualizar_button.addEventListener('click', handle_visualizar);
+			const avaliar_button =
+				document.getElementById('avaliar_button');
+			avaliar_button.addEventListener('click', handle_visualizar)
+
 			function handle_visualizar(e){
 				//e.preventDefault();
 				const disc_id = e.srcElement.parentNode.id;

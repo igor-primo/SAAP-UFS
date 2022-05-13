@@ -11,6 +11,10 @@ async function handle_submit(e) {
 		if (topicos[i].id === 'topico') {
 			const topic_name = topicos[i].children[0].children[1].value;
 			//console.log(topic_name);
+			if(!topic_name){
+				alert('Algum tópico está vazio. Abortando');
+				return;
+			}
 			array_to_send.push(topic_name);
 			const criterios = topicos[i].children;
 			let array_criterios = [];
@@ -18,6 +22,10 @@ async function handle_submit(e) {
 				if (criterios[j].id === 'criterio') {
 					console.log(criterios[j].children[1].value);
 					const criterio = criterios[j].children[1].value;
+					if(!criterio){
+						alert('Algum critério está vazio. Abortando');
+						return;
+					}
 					array_criterios.push(criterio);
 				}
 			array_to_send.push(array_criterios);

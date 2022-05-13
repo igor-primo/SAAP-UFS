@@ -3,16 +3,18 @@ const bcrypt = require('bcryptjs');
 const {customError} = require('../errors/custom');
 const {JWTissuer} = require('../strategies/jwt-issuer');
 
-async function get_resultado(){
+async function get_resultado(id_gru){
 	try {
 		const { rows } =
 			await db.query(
-				`SELECT resultado FROM
+				`SELECT result FROM
 					resultado
 				WHERE fk_grupo = $1;`,
 				[ id_gru ]
 			);
-		return rows[0];
+		console.log('resultado');
+		console.log(rows);
+		return rows;
 	} catch(e) {
 		throw e;
 	}
@@ -42,13 +44,13 @@ async function post_resultado(id_gru){
 						usuario AS us
 					ON av.fk_avaliador = us.id
 					WHERE av.fk_grupo = $1;`,
-					[ id_grupo ]
+					[ id_gru ]
 				);
 			const rows = notas_query.rows;
 			let count_pesos = 0;
 			for(let i=0;i<rows.length;i++){
-				const peso = is_aluno == true ?
-					peso_alun : peso_prof;
+				const peso = rows[i].is_aluno == true ?
+					pond_info.peso_alun : pond_info.peso_prof;
 				result += rows[i].nota*peso;
 				count_pesos += peso;
 			}

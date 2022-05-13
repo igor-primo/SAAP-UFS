@@ -6,7 +6,7 @@ async function get_projetos_cadastrados(id){
 	try {
 
 		const queryres = await db.query(
-			`SELECT id, nome, data_apres FROM
+			`SELECT id, nome, data_apres, is_pond, peso_prof, peso_alun FROM
 				projeto
 			WHERE
 				fk_disc = $1`,

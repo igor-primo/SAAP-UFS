@@ -18,7 +18,7 @@ router.route('/')
 	.all(auth())
 	.post(resultadoController.post_resultado);
 
-router.route('/:id_gru/get_resultado')
+router.route('/get_resultado/:id_gru')
 	.all(auth())
 	.get(resultadoController.get_resultado)
 

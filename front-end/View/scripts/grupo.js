@@ -1,6 +1,8 @@
 const grupo = JSON.parse(sessionStorage.getItem('grupo'));
+const proj = JSON.parse(sessionStorage.getItem('proj'));
 const user_creds = JSON.parse(sessionStorage.getItem('user_creds'));
 console.log(grupo);
+console.log(proj);
 
 document.getElementById('grupo_nome').innerHTML = `Grupo: ${grupo.nome}`;
 document.getElementById('grupo_tema').innerHTML = `${grupo.tema}`;
@@ -109,9 +111,11 @@ async function get_integrantes(){
 		console.log(integrantes);
 		let str = '';
 		let i = 0;
-		for(;i<integrantes.length - 1;i++)
-			str += integrantes[i].username + ', ';
-		str += integrantes[i].username;
+		if(integrantes.length != 0){
+			for(;i<integrantes.length - 1;i++)
+				str += integrantes[i].username + ', ';
+			str += integrantes[i].username;
+		}
 		document.getElementById('integrantes_lista')
 			.innerHTML = `${str}`;
 	});
@@ -151,17 +155,23 @@ async function get_resultado(){
 		}
 	};
 	await fetch(
-		`http://127.0.0.1:5000/api/v1/resultado/${id_gru}/get_resultado`,
+		`http://127.0.0.1:5000/api/v1/resultado/get_resultado/${id_gru}`,
 		opt
 	).then(async data => {
-		const resultado = data.json();
+		const resultado = await data.json();
 		if(resultado.msg)
 			alert(resultado.msg);
 		else{
 			const resultado_p =
 				document.getElementById('resultado_p');
-			resultado_p.innerHTML = `O resultado calculado com base na media (Aritmética ou ponderada, pergunte ao professor(a)) das avaliações: ${resultado.resultado}`;
-;
+			console.log(resultado);
+			if(resultado.length > 0)
+				if(proj.is_pond)
+					resultado_p.innerHTML = `Ponderada: ${resultado[0].result} (Peso do professor: ${proj.peso_prof}) | (Peso do aluno: ${proj.peso_alun})`;
+				else
+					resultado_p.innerHTML = `Aritmética: ${resultado[0].result}`;
+			else
+				resultado_p.innerHTML = 'Não calculado.';
 		}
 	});
 }
@@ -173,4 +183,5 @@ const adicionar_integrantes_button =
 	document.getElementById('adicionar_integrantes_button');
 adicionar_integrantes_button.addEventListener('click', post_integrantes);
 const calcular_resultado_button =
-	document.getElementById('calcular_resultado_button', post_resultado);
+	document.getElementById('calcular_resultado_button');
+calcular_resultado_button.addEventListener('click', post_resultado)

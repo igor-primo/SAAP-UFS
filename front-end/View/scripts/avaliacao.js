@@ -1,6 +1,9 @@
 const grupo = JSON.parse(sessionStorage.getItem('grupo'));
 const proj = JSON.parse(sessionStorage.getItem('proj'));
 const user_creds = JSON.parse(sessionStorage.getItem('user_creds'));
+console.log(grupo);
+console.log(proj);
+console.log(user_creds);
 
 async function get_formulario(){
 	const token = user_creds.token;
@@ -51,43 +54,49 @@ async function get_formulario(){
 			const enviar_div_button = 
 				document.getElementById('enviar_div_button');
 			corpo.insertBefore(topico, enviar_div_button);
-			//corpo.appendChild(topico);
-			const enviar_formulario_button =
-				document.getElementById('enviar_formulario_button');
-			enviar_formulario_button.addEventListener('click', post_avaliacao);
+		}
+		//corpo.appendChild(topico);
+		const enviar_formulario_button =
+			document.getElementById('enviar_formulario_button');
+		enviar_formulario_button.addEventListener('click', post_avaliacao);
 
-			async function post_avaliacao(e){
-				e.preventDefault();
-				const token = user_cres.token;
-				const id_av = user_creds.id;
-				const id_gru = grupo.id;
-				const notas =
-					document.getElementsByName('notas');
-				console.log(notas);
-				let nota = 0;
-				for(let i=0;i<notas.length;i++)
-					nota += notas[i].value;
-				nota += nota / notas.length;
-				const opt = {
-					method: 'POST',
-					body: JSON.stringify({id_av, id_gru, nota}),
-					headers: {
-						"Authorization": "Bearer "+token,
-						"Content-Type": "application/json"
-					}
-				};
-				console.log(opt);
-				await fetch(
-					'http://127.0.0.1:5000/api/v1/avaliacao/post_avaliacao',
-					opt
-				).then(async data => {
-					const data_json = await data.json();
-					if(data_json.msg)
-						alert(data_json.msg);
-					else
-						alert('Avaliação cadastrada com sucesso.');
-				});
+		async function post_avaliacao(e){
+			e.preventDefault();
+			const token = user_creds.token;
+			const id_av = user_creds.id;
+			const id_gru = grupo.id;
+			const notas =
+				document.getElementsByName('notas');
+			console.log(notas);
+			let nota = 0;
+			for(let i=0;i<notas.length;i++){
+				nota += parseFloat(notas[i].value);
+				console.log(nota);
 			}
+			nota = nota / notas.length;
+			if(isNaN(nota)){
+				alert('Alguns campos de critério ficaram vazios. Abortando.');
+				return;
+			}
+			const opt = {
+				method: 'POST',
+				body: JSON.stringify({id_av, id_gru, nota}),
+				headers: {
+					"Authorization": "Bearer "+token,
+					"Content-Type": "application/json"
+				}
+			};
+			console.log(opt);
+			await fetch(
+				'http://127.0.0.1:5000/api/v1/avaliacao/post_avaliacao',
+				opt
+			).then(async data => {
+				const data_json = await data.json();
+				if(data_json.msg)
+					alert(data_json.msg);
+				else
+					alert('Avaliação cadastrada com sucesso.');
+			});
 		}
 	});
 }

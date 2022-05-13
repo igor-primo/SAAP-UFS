@@ -1,7 +1,8 @@
-const form = document.getElementById('cadastroDisciplinaForm');
-console.log(form);
+console.log('why so ssad');
+const button = document.getElementById('cadastrar_disciplina_button');
+console.log(button);
 
-form.addEventListener('submit', handle_submit);
+button.addEventListener('click', handle_submit);
 
 async function handle_submit(e){
 	e.preventDefault();
