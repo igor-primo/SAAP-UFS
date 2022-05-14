@@ -1,9 +1,10 @@
+import BASE_URL from './url.js';
 const disciplina = JSON.parse(sessionStorage.getItem('disc'));
 const user_creds = JSON.parse(sessionStorage.getItem('user_creds'));
 console.log(disciplina);
 
 let projetos = [];
-let aluno = [];
+let alunos = [];
 let professores = [];
 let integrantes = [];
 
@@ -18,7 +19,7 @@ async function get_projetos(){
 		}
 	};
 	await fetch(
-		`http://127.0.0.1:5000/api/v1/projeto/${id_disc}/disciplina`,
+		`${BASE_URL}/api/v1/projeto/${id_disc}/disciplina`,
 		opt
 	).then(async data => {
 		projetos = await data.json();
@@ -72,7 +73,7 @@ async function get_alunos(){
 		body: JSON.stringify({is_aluno})
 	};
 	await fetch(
-		'http://127.0.0.1:5000/api/v1/usuario',
+		`${BASE_URL}/api/v1/usuario`,
 		opt
 	).then(async data => {
 		alunos = await data.json();
@@ -126,7 +127,7 @@ async function get_alunos(){
 			};
 			console.log(id_us_arr, disc_id, opt);
 			await fetch(
-				`http://127.0.0.1:5000/api/v1/disciplina/cadastrar_usuario`,
+				`${BASE_URL}/api/v1/disciplina/cadastrar_usuario`,
 				opt
 			).then(async data => {
 				const data_json = await data.json();
@@ -154,7 +155,7 @@ async function get_professores(){
 		body: JSON.stringify({is_aluno})
 	};
 	await fetch(
-		'http://127.0.0.1:5000/api/v1/usuario',
+		`${BASE_URL}/api/v1/usuario`,
 		opt
 	).then(async data => {
 		professores = await data.json();
@@ -207,7 +208,7 @@ async function get_professores(){
 				}
 			};
 			await fetch(
-				`http://127.0.0.1:5000/api/v1/disciplina/cadastrar_usuario`,
+				`${BASE_URL}/api/v1/disciplina/cadastrar_usuario`,
 				opt
 			).then(async data => {
 				const data_json = await data.json();
@@ -234,7 +235,7 @@ async function get_integrantes(){
 		}
 	};
 	await fetch(
-		`http://127.0.0.1:5000/api/v1/disciplina/${disc_id}/get_integrantes`,
+		`${BASE_URL}/api/v1/disciplina/${disc_id}/get_integrantes`,
 		opt
 	).then(async data => {
 		integrantes = await data.json();
@@ -265,7 +266,49 @@ async function get_integrantes(){
 	});
 }
 
+function render_conditionals(){
+	if(!user_creds.is_aluno){
+		const cadastrar_projeto =
+			document.createElement('a');
+		cadastrar_projeto.setAttribute('class', 'dropdown-item');
+		cadastrar_projeto.setAttribute('href', 'CadastroProjeto.html');
+		cadastrar_projeto.innerHTML = 'Cadastrar projeto';
+		const adicionar_aluno =
+			document.createElement('a');
+		adicionar_aluno.setAttribute('class', 'dropdown-item');
+		adicionar_aluno.setAttribute('href', '#alunosModal');
+		adicionar_aluno.setAttribute('data-bs-toggle', 'modal');
+		adicionar_aluno.innerHTML = 'Adicionar alunos';
+		const adicionar_professor =
+			document.createElement('a');
+		adicionar_professor.setAttribute('class', 'dropdown-item');
+		adicionar_professor.setAttribute('href', '#professoresModal');
+		adicionar_professor.setAttribute('data-bs-toggle', 'modal');
+		adicionar_professor.innerHTML = 'Adicionar professores';
+		const li3 = document.createElement('li');
+		li3.appendChild(adicionar_professor);
+		const li2 = document.createElement('li');
+		li2.appendChild(adicionar_aluno);
+		const li1 = document.createElement('li');
+		li1.appendChild(cadastrar_projeto);
+		const lo = document.getElementById('lista_opcoes');
+		lo.insertBefore(
+			li1,
+			document.getElementById('li_integrantes')
+		);
+		lo.insertBefore(
+			li2,
+			document.getElementById('li_integrantes')
+		);
+		lo.insertBefore(
+			li3,
+			document.getElementById('li_integrantes')
+		);
+	}
+}
+
 get_projetos();
 get_alunos();
 get_professores();
 get_integrantes();
+render_conditionals();

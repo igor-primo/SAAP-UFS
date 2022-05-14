@@ -1,3 +1,5 @@
+import BASE_URL from './url.js';
+console.log(BASE_URL);
 const form = document.getElementById('loginForm');
 console.log(form);
 form.addEventListener('submit', handle_submit);
@@ -16,7 +18,7 @@ async function handle_submit(e){
 	};
 	console.log(opt);
 	await fetch(
-		'http://127.0.0.1:5000/api/v1/auth/login', 
+		`${BASE_URL}/api/v1/auth/login`, 
 		opt
 		).then(async data => {
 				const data_json = await data.json();
@@ -27,7 +29,7 @@ async function handle_submit(e){
 					const token = data_json.token;
 					console.log(token);
 					sessionStorage.setItem('user_creds', JSON.stringify(data_json));
-					window.location = 'http://127.0.0.1:5000/front-end/View/PaginaPrincipal.html';
+					window.location = `/front-end/View/PaginaPrincipal.html`;
 				}
 		});
 }

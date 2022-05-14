@@ -1,3 +1,4 @@
+import BASE_URL from './url.js';
 const proj = JSON.parse(sessionStorage.getItem('proj'));
 const list_integrantes = JSON.parse(sessionStorage.getItem('list_integrantes'));
 console.log(list_integrantes);
@@ -16,7 +17,7 @@ async function get_avaliadores(){
 	};
 	console.log(opt);
 	await fetch(
-		`http://127.0.0.1:5000/api/v1/avaliador/${id_proj}/avaliadores`,
+		`${BASE_URL}/api/v1/avaliador/${id_proj}/avaliadores`,
 		opt
 	).then(async data => {
 		avaliadores = await data.json();
@@ -97,7 +98,7 @@ function mount_tabela_integrantes(){
 		};
 		console.log(opt);
 		await fetch(
-			'http://127.0.0.1:5000/api/v1/avaliador/post_avaliadores',
+			`${BASE_URL}/api/v1/avaliador/post_avaliadores`,
 			opt
 		).then(async data => {
 			const data_json = data.json();

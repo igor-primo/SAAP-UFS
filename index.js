@@ -24,7 +24,7 @@ app.use(express.urlencoded({extended:false}));
 
 // api
 
-app.use(express.static('../'));
+app.use(express.static('./'));
 
 app.use('/api/v1/auth', auth);
 app.use('/api/v1/disciplina', disciplina);

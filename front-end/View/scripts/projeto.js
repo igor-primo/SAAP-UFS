@@ -1,3 +1,4 @@
+import BASE_URL from './url.js';
 const projeto = JSON.parse(sessionStorage.getItem('proj'));
 const user_creds = JSON.parse(sessionStorage.getItem('user_creds'));
 console.log(projeto);
@@ -17,7 +18,7 @@ async function get_grupos(){
 		}
 	};
 	await fetch(
-		`http://127.0.0.1:5000/api/v1/grupo/${id_proj}/projeto`,
+		`${BASE_URL}/api/v1/grupo/${id_proj}/projeto`,
 		opt
 	).then(async data => {
 		grupos = await data.json();

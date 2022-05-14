@@ -1,3 +1,4 @@
+import BASE_URL from './url.js';
 const user_creds = JSON.parse(sessionStorage.getItem('user_creds'));
 const proj = JSON.parse(sessionStorage.getItem('proj'));
 const cadastro_grupo_form = document.getElementById('cadastro_grupo_form');
@@ -18,7 +19,7 @@ async function post_grupo(e){
 		body: JSON.stringify({nome, tema})
 	};
 	await fetch(
-		`http://127.0.0.1:5000/api/v1/grupo/${id_proj}/projeto`,
+		`${BASE_URL}/api/v1/grupo/${id_proj}/projeto`,
 		opt
 	).then(async data => {
 		const data_json = await data.json();

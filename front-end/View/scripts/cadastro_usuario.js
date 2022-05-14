@@ -1,3 +1,4 @@
+import BASE_URL from './url.js';
 const form = document.getElementById('cadastroUsuario');
 form.addEventListener('submit', handle_submit);
 
@@ -25,7 +26,7 @@ async function handle_submit(e){
 	};
 		console.log(opt);
 	await fetch(
-		'http://127.0.0.1:5000/api/v1/auth/signup',
+		`${BASE_URL}/api/v1/auth/signup`,
 		opt
 	).then(async data => {
 			const data_json = await data.json();
@@ -34,7 +35,7 @@ async function handle_submit(e){
 				alert(data_json.msg);
 			else{
 				alert('Usuário cadastrado com sucesso. Pode-se logar.');
-				window.location = 'http://127.0.0.1:5000/front-end/View/Login.html';
+				window.location = `/front-end/View/Login.html`;
 			}
 		});
 }

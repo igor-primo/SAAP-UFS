@@ -3,7 +3,7 @@ CREATE TABLE IF NOT EXISTS usuario (
 	username VARCHAR(60) NOT NULL,
 	password VARCHAR(255) NOT NULL,
 	email VARCHAR(60) NOT NULL,
-	matricula VARCHAR(10) NOT NULL,
+	matricula VARCHAR(20) NOT NULL,
 	is_aluno BOOLEAN DEFAULT FALSE NOT NULL,
 	CONSTRAINT unique_name UNIQUE(username),
 	CONSTRAINT unique_email UNIQUE(email)

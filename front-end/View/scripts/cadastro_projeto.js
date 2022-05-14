@@ -1,3 +1,4 @@
+import BASE_URL from './url.js';
 const disciplina = JSON.parse(sessionStorage.getItem('disc'));
 const user_creds = JSON.parse(sessionStorage.getItem('user_creds'));
 console.log(disciplina);
@@ -44,7 +45,7 @@ async function post_projetos(e){
 		}
 	};
 	await fetch(
-		`http://127.0.0.1:5000/api/v1/projeto/${id_disc}/disciplina`,
+		`${BASE_URL}/api/v1/projeto/${id_disc}/disciplina`,
 		opt
 	).then(async data => {
 		const data_json = await data.json();

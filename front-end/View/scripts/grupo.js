@@ -1,3 +1,4 @@
+import BASE_URL from './url.js';
 const grupo = JSON.parse(sessionStorage.getItem('grupo'));
 const proj = JSON.parse(sessionStorage.getItem('proj'));
 const user_creds = JSON.parse(sessionStorage.getItem('user_creds'));
@@ -26,7 +27,7 @@ async function get_alunos(){ /* construir tabela de alunos */
 	};
 	console.log(opt);
 	await fetch(
-		'http://127.0.0.1:5000/api/v1/usuario',
+		`${BASE_URL}/api/v1/usuario`,
 		opt
 	).then(async data => {
 		const alunos = await data.json();
@@ -79,7 +80,7 @@ async function post_integrantes(e){
 	};
 	console.log(opt);
 	await fetch(
-		'http://127.0.0.1:5000/api/v1/grupo/post_integrantes',
+		`${BASE_URL}/api/v1/grupo/post_integrantes`,
 		opt
 	).then(async data => {
 		const data_json = await data.json();
@@ -104,7 +105,7 @@ async function get_integrantes(){
 	};
 	console.log(opt);
 	await fetch(
-		`http://127.0.0.1:5000/api/v1/grupo/${id_gru}/integrantes`,
+		`${BASE_URL}/api/v1/grupo/${id_gru}/integrantes`,
 		opt
 	).then(async data => {
 		const integrantes = await data.json();
@@ -134,7 +135,7 @@ async function post_resultado(e){
 		}
 	};
 	await fetch(
-		'http://127.0.0.1:5000/api/v1/resultado',
+		`${BASE_URL}/api/v1/resultado`,
 		opt
 	).then(async data => {
 		const data_json = await data.json();
@@ -155,7 +156,7 @@ async function get_resultado(){
 		}
 	};
 	await fetch(
-		`http://127.0.0.1:5000/api/v1/resultado/get_resultado/${id_gru}`,
+		`${BASE_URL}/api/v1/resultado/get_resultado/${id_gru}`,
 		opt
 	).then(async data => {
 		const resultado = await data.json();

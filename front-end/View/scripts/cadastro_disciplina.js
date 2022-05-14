@@ -1,4 +1,4 @@
-console.log('why so ssad');
+import BASE_URL from './url.js';
 const button = document.getElementById('cadastrar_disciplina_button');
 console.log(button);
 
@@ -20,7 +20,7 @@ async function handle_submit(e){
 	};
 	console.log(opt);
 	await fetch(
-		'http://127.0.0.1:5000/api/v1/disciplina', opt
+		`${BASE_URL}/api/v1/disciplina`, opt
 	).then(async data => {
 		const data_json = await data.json();
 		if(data_json.msg)

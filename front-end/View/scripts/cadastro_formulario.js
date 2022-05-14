@@ -1,3 +1,4 @@
+import BASE_URL from './url.js';
 const user_creds = JSON.parse(sessionStorage.getItem('user_creds'));
 const proj = JSON.parse(sessionStorage.getItem('proj'));
 const form = document.forms['formularioTopico'];
@@ -50,7 +51,7 @@ async function handle_submit(e) {
 		}
 	};
 	await fetch(
-		`http://127.0.0.1:5000/api/v1/formulario/${id_proj}/projeto`,
+		`${BASE_URL}/api/v1/formulario/${id_proj}/projeto`,
 		opt
 	).then(async data => {
 		const data_json = await data.json();

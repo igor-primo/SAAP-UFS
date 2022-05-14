@@ -1,8 +1,9 @@
+import BASE_URL from './url.js';
+const user_creds = JSON.parse(sessionStorage.getItem('user_creds'));
 let disciplinas = [];
 
 async function get_disciplinas(){
 
-	const user_creds = JSON.parse(sessionStorage.getItem('user_creds'));
 	const token = user_creds.token;
 	console.log(user_creds);
 	const bearer = "Bearer " + token;
@@ -12,7 +13,7 @@ async function get_disciplinas(){
 		}
 	};
 	await fetch(
-		'http://127.0.0.1:5000/api/v1/disciplina',
+		`${BASE_URL}/api/v1/disciplina`,
 		opt
 	).then(async data => {
 		disciplinas = await data.json();
@@ -50,20 +51,40 @@ async function get_disciplinas(){
 		for(let i=0;i<entrar_button.length;i++)
 			entrar_button[i].addEventListener('click', entrar_disciplina);
 
+		function entrar_disciplina(e){
+			//e.preventDefault();
+			console.log(e.srcElement)
+			const disc = e.srcElement.parentNode.parentNode;
+			console.log(disc.id);
+			const disc_id = disc.id;
+			for(let i=0;i<disciplinas.length;i++)
+				if(disc_id == disciplinas[i].id)
+					sessionStorage.setItem('disc', JSON.stringify(disciplinas[i]));
+			//window.location = '/front-end/View/Disciplina.html';
+		}
+
 	});
 
 }
 
-function entrar_disciplina(e){
-	//e.preventDefault();
-	console.log(e.srcElement)
-	const disc = e.srcElement.parentNode.parentNode;
-	console.log(disc.id);
-	const disc_id = disc.id;
-	for(let i=0;i<disciplinas.length;i++)
-		if(disc_id == disciplinas[i].id)
-			sessionStorage.setItem('disc', JSON.stringify(disciplinas[i]));
-	//window.location = 'http://127.0.0.1:5000/front-end/View/Disciplina.html';
+function render_conditionals(){
+	if(!user_creds.is_aluno){
+		const cd = 
+			document.createElement('a');
+		cd.setAttribute('class', 'nav-link active')
+		cd.setAttribute('href', 'CadastroDisciplina.html')
+		cd.innerHTML = 'Cadastrar Disciplina';
+		const li =
+			document.createElement('li');
+		li.setAttribute('class', 'nav_item');
+		li.appendChild(cd);
+		document.getElementById('lista_opcoes')
+			.insertBefore(
+				li,
+				document.getElementById('id_perfil')
+			);
+	}
 }
 
 get_disciplinas();
+render_conditionals();
