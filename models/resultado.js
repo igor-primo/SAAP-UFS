@@ -22,6 +22,36 @@ async function get_resultado(id_gru){
 
 async function post_resultado(id_gru){
 	try {
+		const already_done_query =
+			await db.query(
+				`SELECT id FROM
+					resultado
+				WHERE fk_grupo = $1;`,
+				[ id_gru ]
+			);
+
+		if(already_done_query.rows.length > 0)
+			throw new customError(
+				'Já há um cálculo de resultado para esse grupo e só é permitido um cálculo de resultado por grupo. Abortando.',
+				300
+			);
+
+		const there_is_avaliacao_query =
+			await db.query(
+				`SELECT fk_grupo FROM
+					avaliacao
+				WHERE fk_grupo = $1;`,
+				[ id_gru ]
+			);
+
+		if(there_is_avaliacao_query.rows.length <= 0)
+			throw new customError(
+				'Não há uma avaliação cadastrada para esse grupo.',
+				300
+			);
+
+		/* Checagens feitas */
+
 		const pond_info_query =
 			await db.query(
 				`SELECT pr.is_pond, pr.peso_prof, pr.peso_alun FROM

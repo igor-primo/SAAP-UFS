@@ -107,7 +107,7 @@ CREATE TABLE IF NOT EXISTS grupo(
 
 CREATE TABLE IF NOT EXISTS resultado(
 	id SERIAL PRIMARY KEY,
-	fk_grupo INT,
+	fk_grupo INT UNIQUE,
 	result DOUBLE PRECISION,
 	CONSTRAINT refer_result_grupo FOREIGN KEY(fk_grupo)
 		REFERENCES grupo(id)
@@ -125,7 +125,8 @@ CREATE TABLE IF NOT EXISTS us_gru (
 	CONSTRAINT refer_usgru_grupo FOREIGN KEY(fk_gru)
 		REFERENCES grupo(id)
 		ON DELETE CASCADE
-		ON UPDATE CASCADE
+		ON UPDATE CASCADE,
+	PRIMARY KEY(fk_us, fk_gru)
 );
 
 CREATE TABLE IF NOT EXISTS avaliacao(

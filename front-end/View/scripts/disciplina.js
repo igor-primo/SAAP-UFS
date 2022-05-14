@@ -1,7 +1,7 @@
 import BASE_URL from './url.js';
 const disciplina = JSON.parse(sessionStorage.getItem('disc'));
 const user_creds = JSON.parse(sessionStorage.getItem('user_creds'));
-console.log(disciplina);
+console.log('disciplina', disciplina);
 
 let projetos = [];
 let alunos = [];
@@ -23,7 +23,7 @@ async function get_projetos(){
 		opt
 	).then(async data => {
 		projetos = await data.json();
-		console.log(projetos);
+		console.log('projetos', projetos);
 		for(let i=0;i<projetos.length;i++){
 			const nome = projetos[i].nome;
 			const data = new Date(projetos[i].data_apres);
@@ -77,12 +77,14 @@ async function get_alunos(){
 		opt
 	).then(async data => {
 		alunos = await data.json();
-		console.log(alunos);
+		console.log('alunos', alunos);
 		if(alunos.msg)
 			alert(alunos.msg);
 		const corpo_tabela_integrantes =
 			document.getElementById('lista_alunos');
 		for(let i=0;i<alunos.length;i++){
+			if(integrantes_includes(alunos[i])) 
+				continue;
 			const checkbox = document.createElement('input');
 			console.log(alunos[i]);
 			checkbox.setAttribute('type', 'checkbox');
@@ -241,8 +243,8 @@ async function get_integrantes(){
 	).then(async data => {
 		integrantes = await data.json();
 		if(integrantes.msg)
-			alert(Integrantes.msg);
-		console.log(integrantes);
+			alert(integrantes.msg);
+		console.log('integrantes', integrantes);
 		const tabela_integrantes_alunos =
 			document.getElementById('tabela_integrantes_alunos');
 		const tabela_integrantes_professores =
@@ -308,8 +310,15 @@ function render_conditionals(){
 	}
 }
 
-get_projetos();
-get_alunos();
-get_professores();
-get_integrantes();
+function integrantes_includes(aluno){
+	for(let i=0;i<integrantes.length;i++)
+		if(integrantes[i].id == aluno.id)
+			return true;
+	return false;
+}
+
+await get_projetos();
+await get_integrantes();
+await get_alunos();
+await get_professores();
 render_conditionals();

@@ -60,7 +60,7 @@ async function get_integrantes(id_gru){
 	try {
 		const { rows } = 
 			await db.query(
-				`SELECT us.username FROM
+				`SELECT us.id, us.username FROM
 					usuario AS us
 				INNER JOIN us_gru AS ug
 				ON us.id = ug.fk_us

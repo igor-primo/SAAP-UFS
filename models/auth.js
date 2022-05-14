@@ -13,7 +13,17 @@ async function signup (
 
 	try {
 
-		//TODO: decide if username is to be unique
+		/* Checagem de dados */
+
+		if(!username || !password
+			|| !email || !matricula 
+			|| !is_aluno)
+			throw new customError(
+				'Algum dos dados de entrada estão vazios.',
+				300
+			);
+
+		/* Após checagens */
 
 		const hash = await bcrypt.hash(password, 10);
 		const queryres = await db.query(

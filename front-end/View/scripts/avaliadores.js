@@ -49,6 +49,7 @@ function mount_tabela_integrantes(){
 		document.getElementById('tabela_integrantes_avaliadores');
 	for(let i=0;i<list_integrantes.length;i++){
 		if(list_integrantes[i].id == user_creds.id) continue;
+		if(avaliadores_includes(list_integrantes[i])) continue;
 		const checkbox = document.createElement('input');
 		checkbox.setAttribute('type', 'checkbox');
 		checkbox.setAttribute('class', 'custom-control-input');
@@ -103,7 +104,7 @@ function mount_tabela_integrantes(){
 			`${BASE_URL}/api/v1/avaliador/post_avaliadores`,
 			opt
 		).then(async data => {
-			const data_json = data.json();
+			const data_json = await data.json();
 			if(data_json.msg)
 				alert(data_json.msg);
 			else
@@ -112,5 +113,12 @@ function mount_tabela_integrantes(){
 	}
 }
 
-get_avaliadores();
+function avaliadores_includes(integrante){
+	for(let i=0;i<avaliadores.length;i++)
+		if(avaliadores[i].id == integrante.id)
+			return true;
+	return false;
+}
+
+await get_avaliadores();
 mount_tabela_integrantes();

@@ -12,6 +12,9 @@ document.getElementById('grupo_tema').innerHTML = `${grupo.tema}`;
 //const doc = document.getElementsByTagName('body')[0];
 //doc.addEventListener('onload', get_alunos);
 
+let integrantes = [];
+let alunos = [];
+
 async function get_alunos(){ /* construir tabela de alunos */
 	//e.preventDefault();
 	console.log('what');
@@ -30,11 +33,12 @@ async function get_alunos(){ /* construir tabela de alunos */
 		`${BASE_URL}/api/v1/usuario`,
 		opt
 	).then(async data => {
-		const alunos = await data.json();
+		alunos = await data.json();
 		console.log(alunos);
 		const corpo_tabela_integrantes =
 			document.getElementById('corpo_tabela_integrantes');
 		for(let i=0;i<alunos.length;i++){
+			if(integrantes_includes(alunos[i])) continue;
 			const checkbox = document.createElement('input');
 			console.log(alunos[i]);
 			checkbox.setAttribute('type', 'checkbox');
@@ -108,7 +112,7 @@ async function get_integrantes(){
 		`${BASE_URL}/api/v1/grupo/${id_gru}/integrantes`,
 		opt
 	).then(async data => {
-		const integrantes = await data.json();
+		integrantes = await data.json();
 		console.log(integrantes);
 		let str = '';
 		let i = 0;
@@ -195,9 +199,16 @@ function render_conditionals(){
 	}
 }
 
-get_alunos();
-get_integrantes();
-get_resultado();
+function integrantes_includes(aluno){
+	for(let i=0;i<integrantes.length;i++)
+		if(integrantes[i].id == aluno.id)
+			return true;
+	return false;
+}
+
+await get_integrantes();
+await get_alunos();
+await get_resultado();
 render_conditionals();
 const adicionar_integrantes_button = 
 	document.getElementById('adicionar_integrantes_button');

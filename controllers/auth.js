@@ -7,11 +7,11 @@ const signup = asyncWrapper(async (req, res) => {
 
 	console.log(req.body);
 
-	const username = req.body.username;
-	const password = req.body.password;
-	const email = req.body.email;
-	const matricula = req.body.matricula;
-	const is_aluno = req.body.is_aluno;
+	const username = req.body.username || null;
+	const password = req.body.password || null;
+	const email = req.body.email || null;
+	const matricula = req.body.matricula || null;
+	const is_aluno = req.body.is_aluno || null;
 
 	const returned = await models.signup(
 		username, password, email,

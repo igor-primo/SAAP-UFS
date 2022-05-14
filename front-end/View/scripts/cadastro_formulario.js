@@ -1,7 +1,7 @@
 import BASE_URL from './url.js';
 const user_creds = JSON.parse(sessionStorage.getItem('user_creds'));
 const proj = JSON.parse(sessionStorage.getItem('proj'));
-const form = document.forms['formularioTopico'];
+const form = document.getElementById('formularioTopico');
 form.addEventListener('submit', handle_submit);
 
 async function handle_submit(e) {

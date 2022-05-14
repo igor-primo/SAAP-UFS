@@ -38,6 +38,13 @@ async function post_projetos_cadastrados(
 
 	try {
 
+		if(is_pond && (peso_prof == null || peso_alun == null))
+			throw new customError(
+				'Algum dos pesos não foram informados e a nota é ponderada.',
+				300
+			);
+			
+
 		const queryres = await client.query(
 			`INSERT INTO
 				projeto
