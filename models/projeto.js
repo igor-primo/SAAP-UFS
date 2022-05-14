@@ -30,12 +30,15 @@ async function post_projetos_cadastrados(
 	is_pond,
 	peso_prof,
 	peso_alun,
-	data_apres
+	data_apres,
+	id_us
 ){
+
+	const client = db.getClient();
 
 	try {
 
-		const queryres = await db.query(
+		const queryres = await client.query(
 			`INSERT INTO
 				projeto
 			VALUES(
@@ -58,11 +61,26 @@ async function post_projetos_cadastrados(
 					data_apres
 				]
 		);
+		const id_proj = queryres.rows[0].id;
+		await client.query(
+			`INSERT INTO
+				avaliador
+			VALUES(
+				$1,
+				$2
+			);`,
+			[ id_us, id_proj ]
+		);
+
+		client.query('COMMIT');
+		client.release();
 
 		return queryres.rows[0];
 
 	} catch(e) {
 
+		client.query('ROLLBACK');
+		client.release();
 		throw e;
 
 	}

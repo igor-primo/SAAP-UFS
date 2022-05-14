@@ -1,5 +1,6 @@
 import BASE_URL from './url.js';
 const proj = JSON.parse(sessionStorage.getItem('proj'));
+const user_creds = JSON.parse(sessionStorage.getItem('user_creds'));
 const list_integrantes = JSON.parse(sessionStorage.getItem('list_integrantes'));
 console.log(list_integrantes);
 //const user_creds = JSON.parse(sessionStorage.getItem('user_creds'));
@@ -47,6 +48,7 @@ function mount_tabela_integrantes(){
 	const tabela_integrantes_avaliadores =
 		document.getElementById('tabela_integrantes_avaliadores');
 	for(let i=0;i<list_integrantes.length;i++){
+		if(list_integrantes[i].id == user_creds.id) continue;
 		const checkbox = document.createElement('input');
 		checkbox.setAttribute('type', 'checkbox');
 		checkbox.setAttribute('class', 'custom-control-input');

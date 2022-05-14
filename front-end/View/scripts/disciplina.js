@@ -165,6 +165,7 @@ async function get_professores(){
 		const corpo_tabela_integrantes =
 			document.getElementById('lista_professores');
 		for(let i=0;i<professores.length;i++){
+			if(professores[i].id == user_creds.id) continue;
 			const checkbox = document.createElement('input');
 			console.log(professores[i]);
 			checkbox.setAttribute('type', 'checkbox');

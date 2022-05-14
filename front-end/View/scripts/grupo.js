@@ -177,9 +177,28 @@ async function get_resultado(){
 	});
 }
 
+function render_conditionals(){
+	if(!user_creds.is_aluno){
+		const corpo = document.getElementById('corpo');
+		const bu = document.createElement('button');
+		bu.setAttribute('id', 'calcular_resultado_button');
+		bu.setAttribute('type', 'button');
+		bu.setAttribute('class', 'btn btn-primary ');
+		bu.innerHTML = 'Calcular resultado';
+		const div = document.createElement('div');
+		div.setAttribute('class', 'text-end');
+		div.appendChild(bu);
+		corpo.insertBefore(
+			bu,
+			document.getElementById('grupo_nome')
+		);
+	}
+}
+
 get_alunos();
 get_integrantes();
 get_resultado();
+render_conditionals();
 const adicionar_integrantes_button = 
 	document.getElementById('adicionar_integrantes_button');
 adicionar_integrantes_button.addEventListener('click', post_integrantes);

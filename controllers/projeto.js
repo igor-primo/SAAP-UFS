@@ -21,6 +21,8 @@ const post_projetos_cadastrados = asyncWrapper(async (req, res) => {
 	const peso_prof = req.body.peso_prof || null;
 	const peso_alun = req.body.peso_alun || null;
 	const data_apres = req.body.data_apres || new Date(); //date object
+	
+	const id_us = req.user.id;
 
 	//TODO: prep data_apres for db
 
@@ -32,7 +34,8 @@ const post_projetos_cadastrados = asyncWrapper(async (req, res) => {
 			is_pond,
 			peso_prof,
 			peso_alun,
-			data_apres
+			data_apres,
+			id_us
 		);
 
 	return res.status(201).json(projeto);
