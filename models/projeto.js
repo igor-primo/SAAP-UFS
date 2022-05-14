@@ -34,7 +34,7 @@ async function post_projetos_cadastrados(
 	id_us
 ){
 
-	const client = db.getClient();
+	const client = await db.getClient();
 
 	try {
 
