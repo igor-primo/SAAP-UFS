@@ -2,6 +2,7 @@ import BASE_URL from './url.js';
 const grupo = JSON.parse(sessionStorage.getItem('grupo'));
 const proj = JSON.parse(sessionStorage.getItem('proj'));
 const user_creds = JSON.parse(sessionStorage.getItem('user_creds'));
+const disciplina = JSON.parse(sessionStorage.getItem('disc'));
 console.log(grupo);
 console.log(proj);
 
@@ -182,7 +183,8 @@ async function get_resultado(){
 }
 
 function render_conditionals(){
-	if(!user_creds.is_aluno){
+	if(!user_creds.is_aluno && disciplina.prof_resp == user_creds.id){
+		/* Botão para calcular o resultado */
 		const corpo = document.getElementById('corpo');
 		const bu = document.createElement('button');
 		bu.setAttribute('id', 'calcular_resultado_button');
@@ -196,6 +198,26 @@ function render_conditionals(){
 			bu,
 			document.getElementById('grupo_nome')
 		);
+		/* Lista de opções */
+		const li = document.createElement('li');
+		li.setAttribute('class', 'nav-item dropstart');
+		li.innerHTML = 
+			`
+				<a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button"
+					data-bs-toggle="dropdown" aria-expanded="false">Opções
+				</a>
+				<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+					<!-- <li><a class="dropdown-item" href="#">Editar Grupo</a></li> -->
+					<li><a id="adicionar_integrantes" class="dropdown-item" href="#adicionarIntegrantesModal" data-bs-toggle="modal">Adicionar integrantes</a>
+					</li>
+					<!-- <li><a class="dropdown-item" href="#integrantesModal" data-bs-toggle="modal">Integrantes</a></li> -->
+					<!-- <li>
+						<hr class="dropdown-divider">
+					</li> -->
+				</ul>
+			`;
+		const lista_lista = document.getElementById('lista_lista');
+		lista_lista.insertBefore(li, document.getElementById('li_perfil'));
 	}
 }
 

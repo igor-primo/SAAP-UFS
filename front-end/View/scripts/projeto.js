@@ -1,6 +1,7 @@
 import BASE_URL from './url.js';
 const projeto = JSON.parse(sessionStorage.getItem('proj'));
 const user_creds = JSON.parse(sessionStorage.getItem('user_creds'));
+const disciplina = JSON.parse(sessionStorage.getItem('disc'));
 console.log(projeto);
 
 document.getElementById('nome_projeto').innerHTML = 
@@ -56,4 +57,92 @@ async function get_grupos(){
 	});
 }
 
+function render_conditionals(){
+	if(!user_creds.is_aluno && disciplina.prof_resp == user_creds.id){
+		const li =
+			document.createElement('li');
+		li.setAttribute('id', 'lista_opcoes');
+		li.setAttribute('class', 'nav-item dropstart');
+		li.innerHTML = 
+			`
+			<a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button"
+				data-bs-toggle="dropdown" aria-expanded="false">Opções
+			</a>
+			<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+				<!-- <li><a class="dropdown-item" href="#">Editar Projeto</a></li> -->
+				<li><a class="dropdown-item" href="CadastroGrupo.html">Criar grupo</a></li>
+				<li><a class="dropdown-item" href="CadastroFormulario.html">Criar formulário de avaliação</a></li>
+				<!-- <li><a class="dropdown-item" href="#">Editar formulário</a></li> -->
+				<li><a class="dropdown-item" href="#exampleModal" data-bs-toggle="modal">Convidar
+						avaliadores</a></li>
+				<li><a class="dropdown-item" href="#avaliadoresModal" data-bs-toggle="modal">Avaliadores</a></li>
+				<li><a id="inicializar_periodo" class="dropdown-item" href="#">Iniciar Periodo de avaliação</a></li>
+				<li><a id="terminar_periodo" class="dropdown-item" href="#">Finalizar Periodo de avaliação</a></li>
+				<!-- <li>
+					<hr class="dropdown-divider">
+				</li>
+				<li><a class="dropdown-item" href="#">Encerrar Projeto</a></li> -->
+			</ul>
+			`;
+		const lista_lista = 
+			document.getElementById('lista_lista');
+		lista_lista.insertBefore(li, document.getElementById('li_perfil'));
+
+		document.getElementById('inicializar_periodo')
+			.addEventListener('click', inicializar_periodo);
+
+		document.getElementById('terminar_periodo')
+			.addEventListener('click', terminar_periodo);
+
+		async function inicializar_periodo(e){
+			e.preventDefault();
+			const token = user_creds.token;
+			const id_proj = projeto.id;
+			const iniciado_b = true;
+			const terminado_b = false;
+			const opt ={
+				method: 'PUT',
+				body: JSON.stringify({id_proj, iniciado_b, terminado_b}),
+				headers: {
+					"Authorization": "Bearer "+token,
+					"Content-Type": "application/json"
+				}
+			};
+			await fetch(`${BASE_URL}/api/v1/periodo_avaliacao`, opt)
+				.then(async data => {
+					const data_json = await data.json();
+					if(data_json.msg)
+						alert(data_json.msg);
+					else 
+						alert('O período de início foi iniciado.');
+				});
+		}
+
+		async function terminar_periodo(e){
+			e.preventDefault();
+			const token = user_creds.token;
+			const id_proj = projeto.id;
+			const iniciado_b = true;
+			const terminado_b = true;
+			const opt ={
+				method: 'PUT',
+				body: JSON.stringify({id_proj, iniciado_b, terminado_b}),
+				headers: {
+					"Authorization": "Bearer "+token,
+					"Content-Type": "application/json"
+				}
+			};
+			await fetch(`${BASE_URL}/api/v1/periodo_avaliacao`, opt)
+				.then(async data => {
+					const data_json = await data.json();
+					if(data_json.msg)
+						alert(data_json.msg);
+					else
+						alert('O período de avaliação foi terminado');
+				});
+		}
+	}
+}
+
 get_grupos();
+render_conditionals();

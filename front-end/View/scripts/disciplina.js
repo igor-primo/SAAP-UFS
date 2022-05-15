@@ -23,10 +23,16 @@ async function get_projetos(){
 		opt
 	).then(async data => {
 		projetos = await data.json();
+		if(projetos.msg){
+			alert(projetos.msg);
+			return;
+		}
 		console.log('projetos', projetos);
 		for(let i=0;i<projetos.length;i++){
 			const nome = projetos[i].nome;
 			const data = new Date(projetos[i].data_apres);
+			const iniciado_b = projetos[i].iniciado_b;
+			const terminado_b = projetos[i].terminado_b;
 			const ano = data.getFullYear();
 			const mes = data.getMonth() + 1;
 			const dia = data.getDate();
@@ -38,6 +44,8 @@ async function get_projetos(){
 					<div class="card-body">
 						<h5 class="card-title">${nome}</h5>
 						<p class="card-text">Início das apresentações: ${data_apres}</p>
+						<p class="card-text">Período de avaliações iniciado: ${iniciado_b == true ? 'Sim': 'Não'}</p>
+						<p class="card-text">Período de avaliações terminado: ${terminado_b == true ? 'Sim': 'Não'}</p>
 						<a name="entrar_button" href="Projeto.html" class="btn btn-primary">Entrar</a>
 					</div>
 			`;
@@ -270,7 +278,7 @@ async function get_integrantes(){
 }
 
 function render_conditionals(){
-	if(!user_creds.is_aluno){
+	if(!user_creds.is_aluno && disciplina.prof_resp == user_creds.id){
 		const cadastrar_projeto =
 			document.createElement('a');
 		cadastrar_projeto.setAttribute('class', 'dropdown-item');

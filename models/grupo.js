@@ -129,13 +129,13 @@ async function post_integrantes(id_gru, id_us_arr){
 		if(!id_gru 
 			|| joi.number().integer().positive()
 				.validate(id_gru).error)
-			throw new customerror(
+			throw new customError(
 				'o identificador grupo precisa ser um número inteiro e positivo.',
 				300
 			);
 
 		if(!id_us_arr
-			|| joi.array().item(
+			|| joi.array().items(
 				joi.number().integer().positive(),
 			).validate(id_us_arr).error)
 			throw new customError(

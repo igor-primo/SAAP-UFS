@@ -20,7 +20,7 @@ const post_projetos_cadastrados = asyncWrapper(async (req, res) => {
 	const is_pond = req.body.is_pond;
 	const peso_prof = req.body.peso_prof || null;
 	const peso_alun = req.body.peso_alun || null;
-	const data_apres = req.body.data_apres || null; //date object
+	const data_apres = req.body.data_apres; //date object
 	
 	const id_us = req.user.id;
 

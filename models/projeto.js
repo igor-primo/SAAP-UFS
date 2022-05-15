@@ -19,8 +19,10 @@ async function get_projetos_cadastrados(id){
 		/* Após checagem */
 
 		const queryres = await db.query(
-			`SELECT id, nome, data_apres, is_pond, peso_prof, peso_alun FROM
+			`SELECT id, nome, data_apres, is_pond, peso_prof, peso_alun, iniciado_b, terminado_b FROM
 				projeto
+			INNER JOIN periodo_avaliacao
+			ON fk_proj = id
 			WHERE
 				fk_disc = $1`,
 			[ id ]
@@ -69,24 +71,27 @@ async function post_projetos_cadastrados(
 				300
 			);
 
-		if(!(is_indiv == true) || !(is_indiv == false)
-			|| !(is_pond == true) || !(is_pond == false))
+		if(!(is_indiv == true) && !(is_indiv == false)
+			&& !(is_pond == true) && !(is_pond == false))
 			throw new customError(
 				'O projeto precisa ser individual ou em grupo e a nota deve ser aritmética ou ponderada.',
 				300
 			);
 
-		if(is_pond === true
+		if(is_pond == true
 			&& (!peso_prof 
 					|| !peso_alun))
 			throw new customError(
-				'A nota deve ser ponderada mas os algum dos pesos não foram fornecidos.',
+				'O tipo de nota escolhida é ponderada mas algum dos pesos não foram fornecidos.',
 				300
 			);
 
-		if(!data_apres
+		const data_apres_ob =
+			new Date(data_apres);
+
+		if(!data_apres_ob
 			|| joi.object().instance(Date)
-				.validate(data_apres).error)
+				.validate(data_apres_ob).error)
 			throw new customError(
 				'A data de apresentação é inválida.',
 				300
@@ -127,6 +132,17 @@ async function post_projetos_cadastrados(
 				$2
 			);`,
 			[ id_us, id_proj ]
+		);
+		
+		await client.query(
+			`INSERT INTO
+				periodo_avaliacao
+			VALUES(
+				$1,
+				DEFAULT,
+				DEFAULT
+			);`,
+			[ id_proj ]
 		);
 
 		client.query('COMMIT');

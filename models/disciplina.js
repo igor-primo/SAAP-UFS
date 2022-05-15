@@ -130,10 +130,9 @@ async function cadastrar_usuario(
 		if(!id_us_arr 
 			|| joi.array().items(
 				joi.number().integer().positive()
-			).validate(id_us_arr).error
-			|| joi.number().integer().positive())
+			).validate(id_us_arr).error)	
 			throw new customError(
-				'O vetor de identificadores precisa ser de números inteiros positivos e o identificador de projeto precisa ser inteiro positivo.',
+				'O vetor de identificadores precisa ser de números inteiros positivos.',
 				300
 			);
 

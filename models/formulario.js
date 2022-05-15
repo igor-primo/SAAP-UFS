@@ -3,17 +3,17 @@ const {customError} = require('../errors/custom');
 const joi = require('joi');
 
 async function post_formularios_cadastrados(
-	id,
+	id_proj,
 	data_comeco,
 	data_fim,
 	secoes,
 ){
 	/* Checagem de dads */
 
-	if(!id
-		|| joi.number().integer().positive().validate(id))
+	if(!id_proj
+		|| joi.number().integer().positive().validate(id_proj).error)
 		throw new customError(
-			'O identificador de usuário precisa ser um número inteiro positivo.',
+			'O identificador de projeto precisa ser um número inteiro positivo.',
 			300
 		);
 
@@ -53,7 +53,7 @@ async function post_formularios_cadastrados(
 				`SELECT id FROM
 					formulario
 				WHERE fk_proj = $1`,
-				[ id ]
+				[ id_proj ]
 			);
 
 		if(rows.length >= 1)
@@ -72,7 +72,7 @@ async function post_formularios_cadastrados(
 				$3
 			) RETURNING id;`,
 			[ 
-				id,
+				id_proj,
 				data_comeco,
 				data_fim
 			]

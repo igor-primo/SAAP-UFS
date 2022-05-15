@@ -51,7 +51,8 @@ async function post_avaliadores(id_us_arr, id_proj){
 			|| joi.array().items(
 				joi.number().integer().positive()
 			).validate(id_us_arr).error
-			|| joi.number().integer().positive())
+			|| joi.number().integer().positive()
+				.validate(id_proj).error)
 			throw new customError(
 				'O vetor de identificadores precisa ser de números inteiros positivos e o identificador de projeto precisa ser inteiro positivo.',
 				300

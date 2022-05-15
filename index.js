@@ -12,6 +12,7 @@ const usuario = require('./routers/usuario');
 const avaliador = require('./routers/avaliador');
 const avaliacao = require('./routers/avaliacao');
 const resultado = require('./routers/resultado');
+const periodo_avaliacao = require('./routers/periodo_avaliacao');
 const error = require('./middlewares/error');
 
 const app = express();
@@ -35,6 +36,7 @@ app.use('/api/v1/usuario', usuario);
 app.use('/api/v1/avaliador', avaliador);
 app.use('/api/v1/avaliacao', avaliacao);
 app.use('/api/v1/resultado', resultado);
+app.use('/api/v1/periodo_avaliacao', periodo_avaliacao);
 app.use(error);
 
 app.use('/', (req, res) => res.redirect('/front-end/View/Login.html'));
