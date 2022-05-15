@@ -3,7 +3,7 @@ const models = require('../models/avaliador');
 
 const get_avaliadores = asyncWrapper(async (req, res) => {
 
-	const id_proj = req.params.id_proj;
+	const id_proj = req.params.id_proj || null;
 
 	const avaliadores = await models.get_avaliadores(id_proj);
 
@@ -14,8 +14,8 @@ const get_avaliadores = asyncWrapper(async (req, res) => {
 
 const post_avaliadores = asyncWrapper(async (req, res) => {
 
-	const id_us_arr = req.body.id_us_arr;
-	const id_proj = req.body.id_proj;
+	const id_us_arr = req.body.id_us_arr || null;
+	const id_proj = req.body.id_proj || null;
 
 	await models.post_avaliadores(id_us_arr, id_proj);
 

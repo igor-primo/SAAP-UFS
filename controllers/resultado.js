@@ -2,7 +2,7 @@ const asyncWrapper = require('../utils/async');
 const models = require('../models/resultado');
 
 const get_resultado = asyncWrapper(async (req, res) => {
-	const id_gru = req.params.id_gru;
+	const id_gru = req.params.id_gru || null;
 
 	const resultado = 
 		await models.get_resultado(id_gru);
@@ -11,7 +11,7 @@ const get_resultado = asyncWrapper(async (req, res) => {
 });
 
 const post_resultado =  asyncWrapper(async (req, res) => {
-	const id_gru = req.body.id_gru;
+	const id_gru = req.body.id_gru || null;
 
 	await models.post_resultado(id_gru);
 

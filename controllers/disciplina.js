@@ -3,7 +3,7 @@ const models = require('../models/disciplina');
 
 const get_disciplinas_cadastradas = asyncWrapper(async (req, res) => {
 
-	const id = req.user.id;
+	const id = req.user.id || null;
 
 	const disciplinas = 
 		await models.get_disciplinas_cadastradas(id);
@@ -15,9 +15,9 @@ const get_disciplinas_cadastradas = asyncWrapper(async (req, res) => {
 
 const post_disciplinas_cadastradas = asyncWrapper(async (req, res) => {
 	
-	const id = req.user.id;
-	const nome_disc = req.body.nome_disc;
-	const prof_resp = req.user.id;
+	const id = req.user.id || null;
+	const nome_disc = req.body.nome_disc || null;
+	const prof_resp = req.user.id || null;
 
 	await models.post_disciplinas_cadastradas(
 		id, nome_disc, prof_resp
@@ -29,8 +29,8 @@ const post_disciplinas_cadastradas = asyncWrapper(async (req, res) => {
 
 const cadastrar_usuario = asyncWrapper(async (req, res) => {
 
-	const id_us_arr = req.body.id_us_arr;
-	const disc_id = req.body.disc_id;
+	const id_us_arr = req.body.id_us_arr || null;
+	const disc_id = req.body.disc_id || null;
 
 	//TODO: how to make sure that
 	//i am responsible for this discipline?
@@ -44,7 +44,7 @@ const cadastrar_usuario = asyncWrapper(async (req, res) => {
 });
 
 const get_integrantes = asyncWrapper(async (req, res) => {
-	const disc_id = req.params.disc_id;
+	const disc_id = req.params.disc_id || null;
 
 	const integrantes = 
 		await models.get_integrantes(disc_id);

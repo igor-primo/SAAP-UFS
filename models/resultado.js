@@ -1,10 +1,22 @@
 const db = require('../db');
-const bcrypt = require('bcryptjs');
 const {customError} = require('../errors/custom');
-const {JWTissuer} = require('../strategies/jwt-issuer');
+const joi = require('joi');
 
 async function get_resultado(id_gru){
 	try {
+
+		/* Checagem de dados */
+
+		if(!id_gru
+			|| joi.number().integer().positive()
+					.validate(id_gru).error)
+			throw new customError(
+				'O identificador de grupo precisa ser um número inteiro positivo.',
+				300
+			);
+
+		/* Após checagem */
+
 		const { rows } =
 			await db.query(
 				`SELECT result FROM
@@ -22,6 +34,17 @@ async function get_resultado(id_gru){
 
 async function post_resultado(id_gru){
 	try {
+		/* Checagem de dados */
+
+		if(!id_gru
+			|| joi.number().integer().positive()
+					.validate(id_gru).error)
+			throw new customError(
+				'O identificador de grupo precisa ser um número inteiro positivo.',
+				300
+			);
+
+		/* Após checagem */
 		const already_done_query =
 			await db.query(
 				`SELECT id FROM

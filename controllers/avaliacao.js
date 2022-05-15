@@ -1,10 +1,11 @@
 const asyncWrapper = require('../utils/async');
 const models = require('../models/avaliacao');
+const joi = require('joi');
 
 const post_avaliacao = asyncWrapper(async (req, res) => {
-	const id_av = req.body.id_av;
-	const id_gru = req.body.id_gru;
-	const nota = req.body.nota;
+	const id_av = req.body.id_av || null;
+	const id_gru = req.body.id_gru || null;
+	const nota = req.body.nota || null;
 
 	await models.post_avaliacao(id_av, id_gru, nota);
 

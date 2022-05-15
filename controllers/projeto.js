@@ -3,7 +3,7 @@ const models = require('../models/projeto');
 
 const get_projetos_cadastrados = asyncWrapper(async (req, res) => {
 
-	const id_disc = req.params.id_disc;
+	const id_disc = req.params.id_disc || null;
 
 	const projetos = await models.get_projetos_cadastrados(id_disc);
 
@@ -14,13 +14,13 @@ const get_projetos_cadastrados = asyncWrapper(async (req, res) => {
 
 const post_projetos_cadastrados = asyncWrapper(async (req, res) => {
 
-	const id_disc = req.params.id_disc;
-	const nome = req.body.nome;
-	const is_indiv = req.body.is_indiv || false;
-	const is_pond = req.body.is_pond || false;
+	const id_disc = req.params.id_disc || null;
+	const nome = req.body.nome || null;
+	const is_indiv = req.body.is_indiv || null;
+	const is_pond = req.body.is_pond || null;
 	const peso_prof = req.body.peso_prof || null;
 	const peso_alun = req.body.peso_alun || null;
-	const data_apres = req.body.data_apres || new Date(); //date object
+	const data_apres = req.body.data_apres || null; //date object
 	
 	const id_us = req.user.id;
 

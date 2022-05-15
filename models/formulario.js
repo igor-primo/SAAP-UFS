@@ -1,5 +1,6 @@
 const db = require('../db');
 const {customError} = require('../errors/custom');
+const joi = require('joi');
 
 async function post_formularios_cadastrados(
 	id,
@@ -7,6 +8,39 @@ async function post_formularios_cadastrados(
 	data_fim,
 	secoes,
 ){
+	/* Checagem de dads */
+
+	if(!id
+		|| joi.number().integer().positive().validate(id))
+		throw new customError(
+			'O identificador de usuário precisa ser um número inteiro positivo.',
+			300
+		);
+
+	/*
+	if(!data_comeco || !data_fim
+		|| joi.object().instance(Date)
+			.validate(data_comeco).error
+		|| joi.object().instance(Date)
+			.validate(data_fim).error)
+		throw new customError(
+			'A data de começo e fim 
+		);
+	*/
+
+	if(!secoes 
+		|| joi.array().items(
+			joi.string(), joi.array().items(
+				joi.string()
+			)
+		).validate(secoes).error)
+		throw new customError(
+			'O vetor contendo o formulário é inválido.',
+			300
+		);
+		
+
+	/* Após checagem */
 
 	const client = await db.getClient();
 
@@ -93,8 +127,19 @@ async function post_formularios_cadastrados(
 }
 
 async function get_formularios_cadastrados(id_proj){
-	console.log(id_proj);
 	try {
+
+		/* Checagem de dados */
+
+		if(!id_proj 
+			|| joi.number().integer().positive()
+				.validate(id_proj).error)
+			throw new customError(
+				'O identificador de projeto precisa ser um número inteiro e positivo.',
+				300
+			);
+
+		/* Após checagem */
 		const query_id_form = await db.query(
 			`SELECT f.id FROM
 				formulario AS f

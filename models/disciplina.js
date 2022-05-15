@@ -1,9 +1,20 @@
 const db = require('../db');
-const {customerror} = require('../errors/custom');
+const {customError} = require('../errors/custom');
+const joi = require('joi');
 
 async function get_disciplinas_cadastradas(id){
 
 	try {
+		/* Checagem de dados */
+
+		if(joi.number().integer().positive()
+			.validate(id).error)
+			throw new customError(
+				'O identificador de usuário precisa ser um número inteiro positivo',
+				300
+			);
+
+		/* Após checagem */
 
 		const disciplinas =
 			await db.query(
@@ -34,6 +45,26 @@ async function post_disciplinas_cadastradas(id, nome_disc, prof_resp){
 	const client = await db.getClient();
 
 	try {
+
+		/* Checagem de dados */
+
+		if(!id ||
+			joi.number().integer().positive()
+				.validate(id).error)
+			throw new customError(
+				'Os identificadores de usuário e professor responsável precisam ser números inteiros positivos.',
+				300
+			);
+
+		if(!nome_disc
+			|| joi.string().min(1).max(200)
+					.validate(nome_disc).error)
+			throw new customError(
+				'O nome da disciplina precisa ter no mínimo 1 caracter e no máximo 200 caracteres.',
+				300
+			);
+
+		/* Após checagem */
 
 		//TODO: i can return
 		//the resulting id
@@ -94,6 +125,28 @@ async function cadastrar_usuario(
 
 	try {
 
+		/* Checagem de dados */
+
+		if(!id_us_arr 
+			|| joi.array().items(
+				joi.number().integer().positive()
+			).validate(id_us_arr).error
+			|| joi.number().integer().positive())
+			throw new customError(
+				'O vetor de identificadores precisa ser de números inteiros positivos e o identificador de projeto precisa ser inteiro positivo.',
+				300
+			);
+
+		if(!disc_id
+			|| joi.number().integer().positive()
+				.validate(disc_id).error)
+			throw new customError(
+				'O identificador de disciplina precisa ser um número inteiro positivo.',
+				300
+			);
+
+		/* Após checagem */
+
 		for(let i=0;i<id_us_arr.length;i++)
 			await db.query(
 				`INSERT INTO 
@@ -120,6 +173,19 @@ async function cadastrar_usuario(
 
 async function get_integrantes(disc_id){
 	try {
+
+		/* Checagem de  dados */
+
+		if(!disc_id
+			|| joi.number().integer().positive()
+				.validate(disc_id).error)
+			throw new customError(
+				'O identificador de disciplina precisa ser um número inteiro positivo.',
+				300
+			);
+
+		/* Após checagem */
+
 		const { rows } = 
 			await db.query(
 				`SELECT us.id, us.username, us.is_aluno FROM

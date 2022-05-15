@@ -1,9 +1,35 @@
 const db = require('../db');
 const bcrypt = require('bcryptjs');
 const {customError} = require('../errors/custom');
+const joi = require('joi');
 
 async function post_avaliacao(id_av, id_gru, nota){
 	try {
+
+		/* Checagem de dados */
+		if(!id_av || !id_gru
+			|| !nota)
+			throw new customError(
+				'Algum dado não foi informado.',
+				300
+			);
+
+		if(joi.number().integer().positive().validate(id_av).error
+			|| joi.number().integer().positive().validate(id_gru).error)
+			throw new customError(
+				'O identificador de avaliador e de grupo precisam ser números interios positivos.',
+				300
+			);
+
+		if(joi.number().positive().validate(nota).error)
+			throw new customError(
+				'A nota precisa ser um número positivo.',
+				300
+			);
+
+		/* Após checagem */
+
+
 		/* 1 pessoa não pode avaliar mais de uma vez */
 		const { rows } =
 			await db.query(
