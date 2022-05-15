@@ -5,8 +5,8 @@ async function get_users(is_aluno){
 	try {
 		/* Checagem de dados */
 
-		if(!(is_aluno === true)
-			|| !(is_aluno === false))
+		if(!(is_aluno == true)
+			&& !(is_aluno == false))
 			throw new customError(
 				'Preciso saber se os usuários devem ser alunos ou professores.',
 				300

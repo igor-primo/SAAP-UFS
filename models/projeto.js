@@ -69,8 +69,8 @@ async function post_projetos_cadastrados(
 				300
 			);
 
-		if(!(is_indiv === true) || !(is_indiv === false)
-			|| !(is_pond === true) || !(is_pond === false))
+		if(!(is_indiv == true) || !(is_indiv == false)
+			|| !(is_pond == true) || !(is_pond == false))
 			throw new customError(
 				'O projeto precisa ser individual ou em grupo e a nota deve ser aritmética ou ponderada.',
 				300

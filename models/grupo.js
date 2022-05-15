@@ -8,9 +8,9 @@ async function get_grupos_cadastrados(id){
 
 		/* Checagem de dados */
 
-		if(!id_proj 
+		if(!id
 			|| joi.number().integer().positive()
-				.validate(id_proj).error)
+				.validate(id).error)
 			throw new customError(
 				'O identificador de projeto precisa ser um número inteiro e positivo.',
 				300

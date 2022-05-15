@@ -23,8 +23,8 @@ async function signup (
 				300
 			);
 
-		if(!(is_aluno === true) 
-			|| !(is_aluno === false))
+		if(!(is_aluno == true) 
+			|| !(is_aluno == false))
 			throw new customError(
 				'O usuário deve ser professor ou aluno.',
 				300
