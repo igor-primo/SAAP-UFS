@@ -73,6 +73,25 @@ async function post_resultado(id_gru){
 				300
 			);
 
+		const finished_exam_period =
+			await db.query(
+				`SELECT pa.iniciado_b, pa.terminado_b
+					FROM grupo AS g
+				INNER JOIN projeto AS p
+				ON g.fk_proj = p.id
+				INNER JOIN periodo_avaliacao AS pa
+				ON pa.fk_proj = p.id
+				WHERE g.id = $1;`,
+				[ id_gru ]
+			);
+
+		if(!finished_exam_period.rows[0].iniciado_b
+			|| !finished_exam_period.rows[0].terminado_b)
+			throw new customError(
+				`Para calcular o resultado é necessário que o período de avaliação tenha terminado.`,
+				300
+			);
+
 		/* Checagens feitas */
 
 		const pond_info_query =
