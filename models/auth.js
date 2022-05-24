@@ -36,22 +36,24 @@ async function signup (
 				300
 			);
 
-		if(joi.string().min(8).max(60).validate(username).error)
+		if(joi.string().min(8).max(59).validate(username).error)
 			throw new customError(
 				'O nome precisa ter no mínimo 8 e no máximo 60 caracteres.',
 				300
 			);
 
 
-		if(joi.string().email().validate(email).error)
+		if(joi.string().email().min(1).max(99)
+				.validate(email).error)
 			throw new customError(
 				'O e-email é inválido.',
 				300
 			);
 
-		if(joi.string().pattern(/^[0-9]+$/).validate(matricula).error)
+		if(joi.string().min(1).max(39)
+				.pattern(/^[0-9]+$/).validate(matricula).error)
 			throw new customError(
-				'A matrícula pode conter apenas números.',
+				'A matrícula pode conter apenas números e ter no máximo 39 caracteres.',
 				300
 			);
 
@@ -115,7 +117,8 @@ async function login (email, password){
 				400
 			);
 
-		if(joi.string().email().validate(email).error)
+		if(joi.string().email().min(1).max(99)
+				.validate(email).error)
 			throw new customError(
 				'O e-mail é inválido.',
 				300

@@ -56,9 +56,9 @@ async function post_grupos_cadastrados(
 			);
 
 		if(!nome || !tema
-			|| joi.string().min(1).max(200)
+			|| joi.string().min(1).max(199)
 					.validate(nome).error
-			|| joi.string().min(1).max(200)
+			|| joi.string().min(1).max(245)
 					.validate(tema).error)
 			throw new customError(
 				'O nome do grupo e o tema precisam ter no mínimo 1 caractere e no máximo 200.',

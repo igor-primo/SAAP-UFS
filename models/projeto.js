@@ -64,7 +64,7 @@ async function post_projetos_cadastrados(
 			);
 
 		if(!nome 
-			|| joi.string().min(1).max(20)
+			|| joi.string().min(1).max(99)
 					.validate(nome).error)
 			throw new customError(
 				'O nome do projeto precisa ter no mínimo 1 caracter e no máximo 20 caracteres.',

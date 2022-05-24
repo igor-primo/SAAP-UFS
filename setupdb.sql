@@ -2,8 +2,8 @@ CREATE TABLE IF NOT EXISTS usuario (
 	id SERIAL PRIMARY KEY,
 	username VARCHAR(60) NOT NULL,
 	password VARCHAR(255) NOT NULL,
-	email VARCHAR(60) NOT NULL,
-	matricula VARCHAR(20) NOT NULL,
+	email VARCHAR(100) NOT NULL,
+	matricula VARCHAR(40) NOT NULL,
 	is_aluno BOOLEAN DEFAULT FALSE NOT NULL,
 	CONSTRAINT unique_name UNIQUE(username),
 	CONSTRAINT unique_email UNIQUE(email)
@@ -11,7 +11,7 @@ CREATE TABLE IF NOT EXISTS usuario (
 
 CREATE TABLE IF NOT EXISTS disciplina (
 	id SERIAL PRIMARY KEY,
-	nome_disc VARCHAR(20) NOT NULL,
+	nome_disc VARCHAR(100) NOT NULL,
 	prof_resp INT NOT NULL,
 	CONSTRAINT refer_prof_resp FOREIGN KEY(prof_resp)
 		REFERENCES usuario(id)
@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS disc_cad (
 
 CREATE TABLE IF NOT EXISTS projeto (
 	id SERIAL PRIMARY KEY,
-	nome VARCHAR(20) NOT NULL,
+	nome VARCHAR(100) NOT NULL,
 	fk_disc INT,
 	is_indiv BOOLEAN NOT NULL DEFAULT FALSE,
 	is_pond BOOLEAN NOT NULL DEFAULT FALSE,
@@ -62,7 +62,7 @@ CREATE TABLE IF NOT EXISTS formulario (
 CREATE TABLE IF NOT EXISTS secao_quest(
 	id SERIAL PRIMARY KEY,
 	fk_form INT,
-	nome_sec VARCHAR(20) NOT NULL,
+	nome_sec VARCHAR(100) NOT NULL,
 	CONSTRAINT refer_sec_form FOREIGN KEY(fk_form)
 		REFERENCES formulario(id)
 		ON DELETE CASCADE
@@ -96,7 +96,7 @@ CREATE TABLE IF NOT EXISTS avaliador(
 
 CREATE TABLE IF NOT EXISTS grupo(
 	id SERIAL PRIMARY KEY,
-	nome VARCHAR(20) NOT NULL,
+	nome VARCHAR(200) NOT NULL,
 	tema VARCHAR(255) NOT NULL,
 	fk_proj INT,
 	CONSTRAINT refer_grupo_proj FOREIGN KEY(fk_proj)

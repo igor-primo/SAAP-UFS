@@ -30,8 +30,8 @@ async function post_formularios_cadastrados(
 
 	if(!secoes 
 		|| joi.array().items(
-			joi.string(), joi.array().items(
-				joi.string()
+			joi.string().min(1).max(99), joi.array().items(
+				joi.string().min(1).max(254)
 			)
 		).validate(secoes).error)
 		throw new customError(

@@ -57,7 +57,7 @@ async function post_disciplinas_cadastradas(id, nome_disc, prof_resp){
 			);
 
 		if(!nome_disc
-			|| joi.string().min(1).max(200)
+			|| joi.string().min(1).max(100)
 					.validate(nome_disc).error)
 			throw new customError(
 				'O nome da disciplina precisa ter no mínimo 1 caracter e no máximo 200 caracteres.',
