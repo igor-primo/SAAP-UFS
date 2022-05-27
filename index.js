@@ -39,7 +39,7 @@ app.use('/api/v1/resultado', resultado);
 app.use('/api/v1/periodo_avaliacao', periodo_avaliacao);
 app.use(error);
 
-app.use('/', (req, res) => res.redirect('/front-end/View/Login.html'));
+//app.use('/', (req, res) => res.redirect('/front-end/View/Login.html'));
 // docs
 
 /*
